@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piper Robotics</title>
+<meta name="description" content="Piper Robotics: the FIRST robotics program of Piper USD 203 in Kansas City, Kansas. Home of B2 Spirit (FLL 623), the Nighthawks (FTC 14213), and Team Stealth (FTC 21536 & FRC 1802).">
+<link rel="icon" href="assets/piper-robotics-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-900: #24103f;
+    --purple-800: #331660;
+    --purple-700: #4a2a85;   /* matches logo purple */
+    --purple-600: #5b33a3;
+    --purple-500: #7444c9;
+    --purple-100: #ece4f8;
+    --purple-50:  #f7f3fd;
+    --ink: #1d1530;
+    --muted: #5c5470;
+    --line: #e2d9f1;
+    --white: #ffffff;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+  }
+  a { color: var(--purple-600); }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header.top {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(36, 16, 63, 0.97);
+    backdrop-filter: blur(8px);
+  }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+  .brand { display: flex; align-items: center; background: var(--white); border-radius: 10px; padding: 5px 10px; }
+  .brand img { height: 40px; width: auto; }
+  nav.links { display: flex; gap: 22px; font-size: 15px; }
+  nav.links a { color: #e0d4f7; text-decoration: none; font-weight: 500; }
+  nav.links a:hover { color: var(--white); }
+  @media (max-width: 760px) { nav.links { display: none; } }
+
+  /* Hero */
+  .hero {
+    background:
+      radial-gradient(900px 400px at 85% -10%, rgba(116,68,201,.55), transparent 60%),
+      radial-gradient(700px 380px at 0% 110%, rgba(91,51,163,.5), transparent 60%),
+      var(--purple-900);
+    color: var(--white);
+    padding: 64px 0 80px;
+  }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #cdb8f7; margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(34px, 5.5vw, 56px); line-height: 1.07; margin: 0 0 18px; font-weight: 800; letter-spacing: -1px; }
+  .hero p.lead { font-size: 18px; color: #e0d4f7; max-width: 560px; margin: 0 0 30px; }
+  .hero-logo { background: var(--white); border-radius: 24px; padding: 28px; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+  .hero-logo img { width: 100%; height: auto; }
+  .motto { margin-top: 16px; text-align: center; color: var(--purple-700); }
+  .motto em { display: block; font-weight: 700; font-size: 17px; }
+  .motto small { color: var(--muted); font-size: 14px; }
+  @media (max-width: 860px) {
+    .hero { padding: 40px 0 60px; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 32px; }
+    .hero-logo { order: -1; padding: 20px; }
+  }
+
+  /* App buttons */
+  .apps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 600px; }
+  .app {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 20px 22px; border-radius: var(--radius);
+    text-decoration: none; color: var(--white);
+    background: var(--purple-500);
+    border: 1px solid rgba(255,255,255,.2);
+    transition: transform .15s ease;
+  }
+  .app.alt { background: var(--white); color: var(--purple-800); }
+  .app:hover { transform: translateY(-2px); }
+  .app strong { font-size: 19px; display: flex; align-items: center; justify-content: space-between; }
+  .app span { font-size: 14px; opacity: .85; }
+  @media (max-width: 520px) { .apps { grid-template-columns: 1fr; } }
+
+  /* Sections */
+  section { padding: 80px 0; }
+  section.tint { background: var(--purple-50); }
+  h2 { font-size: clamp(28px, 4vw, 38px); margin: 0 0 12px; letter-spacing: -.5px; color: var(--purple-900); }
+  .section-lead { color: var(--muted); max-width: 680px; margin: 0 0 40px; font-size: 17px; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; }
+  .about-grid p { margin: 0 0 16px; font-size: 17px; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .stat { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+  .stat b { display: block; font-size: 30px; color: var(--purple-600); line-height: 1.15; }
+  .stat small { color: var(--muted); font-size: 14px; }
+  @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } }
+
+  /* Teams */
+  .teams { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .team { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+  .team .logo-slot { height: 120px; display: grid; place-items: center; margin-bottom: 4px; }
+  .team .logo-slot img { max-height: 120px; width: auto; max-width: 100%; object-fit: contain; }
+  .team .badge { align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--purple-700); background: var(--purple-100); padding: 4px 10px; border-radius: 999px; }
+  .team h3 { margin: 0; font-size: 20px; color: var(--purple-900); }
+  .team p { margin: 0; color: var(--muted); font-size: 15px; }
+  .team .t-motto { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; color: var(--purple-700); }
+  .team .t-motto em { font-weight: 700; display: block; }
+  @media (max-width: 1000px) { .teams { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .teams { grid-template-columns: 1fr; } }
+
+  /* Timeline */
+  .timeline { list-style: none; margin: 0; padding: 0; border-left: 3px solid var(--purple-100); }
+  .timeline li { position: relative; padding: 0 0 28px 28px; }
+  .timeline li:last-child { padding-bottom: 0; }
+  .timeline li::before { content: ""; position: absolute; left: -9px; top: 6px; width: 15px; height: 15px; border-radius: 50%; background: var(--purple-500); border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--purple-500); }
+  .timeline .yr { font-weight: 800; color: var(--purple-600); }
+  .timeline p { margin: 2px 0 0; color: var(--muted); }
+
+  /* CTA band */
+  .band { background: linear-gradient(120deg, var(--purple-700), var(--purple-900)); color: var(--white); border-radius: 24px; padding: 44px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items: center; }
+  .band h2 { color: var(--white); }
+  .band p { color: #e0d4f7; margin: 0; }
+  .band .apps { max-width: none; }
+  @media (max-width: 860px) { .band { grid-template-columns: 1fr; padding: 30px 22px; } }
+
+  /* Footer */
+  footer { background: var(--purple-900); color: #cdb8f7; padding: 48px 0 32px; font-size: 15px; }
+  footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+  footer h4 { color: var(--white); margin: 0 0 12px; font-size: 15px; }
+  footer a { color: #e0d4f7; text-decoration: none; display: block; margin-bottom: 8px; }
+  footer a:hover { color: var(--white); text-decoration: underline; }
+  footer .fine { border-top: 1px solid rgba(255,255,255,.12); margin-top: 32px; padding-top: 20px; font-size: 13px; color: #a995d1; }
+  @media (max-width: 760px) { footer .cols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!--
+  ===== QUICK EDIT GUIDE =====
+  LOGOS live in the "assets" folder next to this page.
+  APP LINKS: replace https://scout.example.com and https://parents.example.com (each appears 3 times).
+-->
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Piper Robotics home">
+      <img src="assets/piper-robotics-logo.png" alt="Piper Robotics">
+    </a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#teams">Our Teams</a>
+      <a href="#history">History</a>
+      <a href="#apps">Apps</a>
+      <a href="https://www.piperschools.com" target="_blank" rel="noopener">Piper Schools</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Piper USD 203 · Kansas City, Kansas · Est. 2006</span>
+        <h1>Build. Compete. Inspire.</h1>
+        <p class="lead">Piper Robotics is the <em>FIRST</em> robotics program of the Piper School District. Four teams, from <em>FIRST</em> LEGO League to the <em>FIRST</em> Robotics Competition, design, build, and program robots and help each other grow as engineers.</p>
+        <div class="apps">
+          <a class="app" href="https://scout.example.com">
+            <strong>Scout App <span aria-hidden="true">→</span></strong>
+            <span>Match scouting for team members</span>
+          </a>
+          <a class="app alt" href="https://parents.example.com">
+            <strong>Parent App <span aria-hidden="true">→</span></strong>
+            <span>Schedules, updates &amp; info for families</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-logo">
+        <img src="assets/piper-robotics-logo.png" alt="Piper Robotics, est. 2006, FIRST">
+        <div class="motto">
+          <em>Prudens quaestio dimidium scientiae.</em>
+          <small>Half of science is asking the right questions.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <h2>About Piper Robotics</h2>
+        <p>Piper Robotics is a district-wide program of Piper Unified School District 203. Our teams span three <em>FIRST</em> programs, giving students a path from their first LEGO robot all the way to full-size competition machines.</p>
+        <p>Students work alongside coaches and mentors to design, fabricate, wire, and program robots, and older students mentor younger teams along the way. We learn by building, breaking, and rebuilding.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>2006</b><small>Program established</small></div>
+        <div class="stat"><b>4</b><small>Competition teams</small></div>
+        <div class="stat"><b style="font-size:24px">FLL · FTC · FRC</b><small>Three <em>FIRST</em> programs</small></div>
+        <div class="stat"><b>2026</b><small><em>FIRST</em> Championship qualifier (FTC 21536)</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="teams" class="tint">
+    <div class="wrap">
+      <h2>Our Teams</h2>
+      <p class="section-lead">Four teams, one program. Each team competes on its own while sharing coaches, the shop, and a commitment to helping each other improve.</p>
+      <div class="teams">
+        <article class="team">
+          <div class="logo-slot"><img src="assets/fll-623.png" alt="B2 Spirit 623 logo"></div>
+          <span class="badge">FLL 623</span>
+          <h3>B2 Spirit</h3>
+          <p>Our <em>FIRST</em> LEGO League team builds and programs LEGO robots and tackles a new research challenge every season.</p>
+          <div class="t-motto"><em>Omnes miramini per Explorationis</em>All wonder through exploration</div>
+        </article>
+        <article class="team">
+          <div class="logo-slot"><img src="assets/ftc-14213.png" alt="Nighthawks 14213 logo"></div>
+          <span class="badge">FTC 14213</span>
+          <h3>Nighthawks</h3>
+          <p>A <em>FIRST</em> Tech Challenge team competing since 2017, with Design, Connect, and Motivate awards at the KC West League Tournament.</p>
+          <div class="t-motto"><em>Audaces fortuna iuvat</em>Fortune favors the bold</div>
+        </article>
+        <article class="team">
+          <div class="logo-slot"><img src="assets/ftc-21536.png" alt="Team Stealth 21536 logo"></div>
+          <span class="badge">FTC 21536</span>
+          <h3>Team Stealth</h3>
+          <p>Our <em>FIRST</em> Tech Challenge team that won the 2025–26 West Super Qualifier and competed at the <em>FIRST</em> Championship.</p>
+          <div class="t-motto"><em>Tempus fugit</em>Time flies</div>
+        </article>
+        <article class="team">
+          <div class="logo-slot"><img src="assets/frc-1802.png" alt="Team Stealth 1802 logo"></div>
+          <span class="badge">FRC 1802</span>
+          <h3>Team Stealth</h3>
+          <p>Our <em>FIRST</em> Robotics Competition team, building full-size competition robots since 2006.</p>
+          <div class="t-motto"><em>Tempus fugit</em>Time flies</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="history">
+    <div class="wrap">
+      <h2>Our History</h2>
+      <p class="section-lead">Two decades of building robots in Piper.</p>
+      <ol class="timeline">
+        <li><span class="yr">2006</span><p>Piper Robotics begins as FRC Team Stealth 1802 competes in its rookie season, <em>Aim High</em>.</p></li>
+        <li><span class="yr">2017</span><p>The Nighthawks (FTC 14213) bring <em>FIRST</em> Tech Challenge to Piper.</p></li>
+        <li><span class="yr">2021–2025</span><p>The Nighthawks earn Design, Connect, and Motivate awards at the KC West League Tournament.</p></li>
+        <li><span class="yr">2022</span><p>Team Stealth adds FTC team 21536.</p></li>
+        <li><span class="yr">2024–25</span><p>FTC 21536 reaches the Missouri-Kansas Championship for the first time and earns the Think Award, 2nd place. FRC 1802 is the first pick for Alliance 7 at the MO-KAN State Championship.</p></li>
+        <li><span class="yr">2025–26</span><p>FTC 21536 seeds first and wins the West Super Qualifier as alliance captain, reaches the finals at the Missouri-Kansas Championship, and competes at the <em>FIRST</em> Championship. The team also wins the 2026 <em>FIRST</em> Digital Animation Award for FTC.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="apps" class="tint">
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <h2>Team apps</h2>
+          <p>Scouts, head to the Scout App on competition days. Families can find schedules, updates, and everything else in the Parent App.</p>
+        </div>
+        <div class="apps">
+          <a class="app alt" href="https://scout.example.com"><strong>Scout App <span aria-hidden="true">→</span></strong><span>For team members</span></a>
+          <a class="app alt" href="https://parents.example.com"><strong>Parent App <span aria-hidden="true">→</span></strong><span>For families</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Piper Robotics</h4>
+        <p style="margin:0">A program of Piper Unified School District 203, Kansas City, Kansas.</p>
+      </div>
+      <div>
+        <h4>Piper Schools</h4>
+        <a href="https://www.piperschools.com" target="_blank" rel="noopener">Piper USD 203</a>
+        <a href="https://www.piperschools.com/schools" target="_blank" rel="noopener">Our Schools</a>
+      </div>
+      <div>
+        <h4>Robotics</h4>
+        <a href="https://scout.example.com">Scout App</a>
+        <a href="https://parents.example.com">Parent App</a>
+        <a href="https://www.instagram.com/teamstealth1802/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/firstteamstealth1802/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="fine">© <span id="yr">2026</span> Piper Robotics · Piper USD 203 · Kansas City, Kansas</div>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
