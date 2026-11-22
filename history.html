@@ -78,7 +78,7 @@
   .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start; }
   .ph { position: relative; margin: 0; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; background: repeating-linear-gradient(135deg, var(--purple-50), var(--purple-50) 10px, var(--purple-100) 10px, var(--purple-100) 20px); border: 1px dashed #c9b8e8; }
   .ph::after { content: attr(data-label); position: absolute; inset: 0; display: grid; place-items: center; text-align: center; font-size: 12px; font-weight: 600; color: var(--purple-700); padding: 6px; }
-  .ph img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
+  .season-photo { display: block; min-width: 0; max-width: 100%; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; border: 1px dashed #c9b8e8; background: var(--purple-50); color: var(--purple-700); font-size: 12px; }
   .s-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 8px; }
   .yr { font-size: 22px; font-weight: 800; color: var(--purple-600); }
   .game { font-weight: 700; color: var(--purple-900); letter-spacing: .3px; }
@@ -157,8 +157,9 @@
 </head>
 <body id="top">
 <!--
-  PHOTOS: put season photos in assets/history/ using the names listed in assets/history/PHOTO-NAMES.txt
-  (e.g. frc1802-2008-robot.jpg, ftc21536-2025-team.jpg). Missing photos show a placeholder automatically.
+  PHOTOS: every season below has two <img> tags pointing at assets/history/<name>.jpg.
+  Until a file is uploaded with that exact name, its image shows as broken. Upload the file and it appears; no code changes needed.
+  Full list of expected file names: assets/history/PHOTO-NAMES.txt and the Photo Checklist spreadsheet.
 -->
 <header class="top">
   <div class="wrap">
@@ -232,8 +233,9 @@
       <div class="seasons">
       <article class="season" id="frc1802-2006">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2006-aim-high-robot.jpg" alt="FRC 1802 2006 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2006-aim-high-team.jpg" alt="FRC 1802 2006 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2006: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2006-aim-high-robot.jpg" alt="FRC 1802 2006 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2006-aim-high-team.jpg" alt="FRC 1802 2006 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2006</span><span class="game">Aim High</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-website">[3]</a><a class="ref" href="#src-alumlist">[4]</a><a class="ref note" href="#note-n2006rec">[a]</a><a class="ref note" href="#note-n2006found">[b]</a></span></div>
@@ -242,8 +244,9 @@
       </article>
       <article class="season" id="frc1802-2007">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2007-rack-n-roll-robot.jpg" alt="FRC 1802 2007 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2007-rack-n-roll-team.jpg" alt="FRC 1802 2007 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2007: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2007-rack-n-roll-robot.jpg" alt="FRC 1802 2007 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2007-rack-n-roll-team.jpg" alt="FRC 1802 2007 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2007</span><span class="game">Rack &#x27;N&#x27; Roll</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-website">[3]</a><a class="ref" href="#src-alumlist">[4]</a><a class="ref note" href="#note-n2007rank">[c]</a></span></div>
@@ -252,8 +255,9 @@
       </article>
       <article class="season" id="frc1802-2008">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2008-first-overdrive-robot.jpg" alt="FRC 1802 2008 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2008-first-overdrive-team.jpg" alt="FRC 1802 2008 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2008: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2008-first-overdrive-robot.jpg" alt="FRC 1802 2008 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2008-first-overdrive-team.jpg" alt="FRC 1802 2008 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2008</span><span class="game">FIRST Overdrive</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-website">[3]</a><a class="ref" href="#src-alumlist">[4]</a><a class="ref note" href="#note-n2008pc">[d]</a></span></div>
@@ -262,8 +266,9 @@
       </article>
       <article class="season" id="frc1802-2009">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2009-lunacy-robot.jpg" alt="FRC 1802 2009 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2009-lunacy-team.jpg" alt="FRC 1802 2009 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2009: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2009-lunacy-robot.jpg" alt="FRC 1802 2009 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2009-lunacy-team.jpg" alt="FRC 1802 2009 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2009</span><span class="game">LUNACY</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-website">[3]</a><a class="ref" href="#src-alumlist">[4]</a><a class="ref note" href="#note-n2009web">[e]</a><a class="ref note" href="#note-n2009rec">[f]</a></span></div>
@@ -272,8 +277,9 @@
       </article>
       <article class="season" id="frc1802-2010">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2010-breakaway-robot.jpg" alt="FRC 1802 2010 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2010-breakaway-team.jpg" alt="FRC 1802 2010 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2010: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2010-breakaway-robot.jpg" alt="FRC 1802 2010 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2010-breakaway-team.jpg" alt="FRC 1802 2010 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2010</span><span class="game">BREAKAWAY</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-website">[3]</a><a class="ref" href="#src-alumlist">[4]</a></span></div>
@@ -282,8 +288,9 @@
       </article>
       <article class="season" id="frc1802-2011">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2011-logo-motion-robot.jpg" alt="FRC 1802 2011 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2011-logo-motion-team.jpg" alt="FRC 1802 2011 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2011: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2011-logo-motion-robot.jpg" alt="FRC 1802 2011 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2011-logo-motion-team.jpg" alt="FRC 1802 2011 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2011</span><span class="game">LOGO MOTION</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-website">[3]</a><a class="ref" href="#src-alumlist">[4]</a><a class="ref note" href="#note-n2011web">[g]</a></span></div>
@@ -292,8 +299,9 @@
       </article>
       <article class="season" id="frc1802-2012">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2012-rebound-rumble-robot.jpg" alt="FRC 1802 2012 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2012-rebound-rumble-team.jpg" alt="FRC 1802 2012 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2012: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2012-rebound-rumble-robot.jpg" alt="FRC 1802 2012 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2012-rebound-rumble-team.jpg" alt="FRC 1802 2012 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2012</span><span class="game">Rebound Rumble</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-website">[3]</a><a class="ref" href="#src-alumlist">[4]</a><a class="ref note" href="#note-n2012yr">[h]</a></span></div>
@@ -302,8 +310,9 @@
       </article>
       <article class="season" id="frc1802-2013">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2013-ultimate-ascent-robot.jpg" alt="FRC 1802 2013 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2013-ultimate-ascent-team.jpg" alt="FRC 1802 2013 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2013: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2013-ultimate-ascent-robot.jpg" alt="FRC 1802 2013 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2013-ultimate-ascent-team.jpg" alt="FRC 1802 2013 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2013</span><span class="game">ULTIMATE ASCENT</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-website">[3]</a><a class="ref" href="#src-alumlist">[4]</a></span></div>
@@ -312,8 +321,9 @@
       </article>
       <article class="season" id="frc1802-2014">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2014-aerial-assist-robot.jpg" alt="FRC 1802 2014 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2014-aerial-assist-team.jpg" alt="FRC 1802 2014 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2014: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2014-aerial-assist-robot.jpg" alt="FRC 1802 2014 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2014-aerial-assist-team.jpg" alt="FRC 1802 2014 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2014</span><span class="game">AERIAL ASSIST</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-website">[3]</a><a class="ref" href="#src-alumlist">[4]</a><a class="ref note" href="#note-n2014roster">[i]</a></span></div>
@@ -322,8 +332,9 @@
       </article>
       <article class="season" id="frc1802-2015">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2015-recycle-rush-robot.jpg" alt="FRC 1802 2015 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2015-recycle-rush-team.jpg" alt="FRC 1802 2015 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2015: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2015-recycle-rush-robot.jpg" alt="FRC 1802 2015 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2015-recycle-rush-team.jpg" alt="FRC 1802 2015 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2015</span><span class="game">RECYCLE RUSH</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-website">[3]</a><a class="ref" href="#src-alumlist">[4]</a><a class="ref" href="#src-timeclock">[5]</a></span></div>
@@ -332,8 +343,9 @@
       </article>
       <article class="season" id="frc1802-2016">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2016-first-stronghold-robot.jpg" alt="FRC 1802 2016 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2016-first-stronghold-team.jpg" alt="FRC 1802 2016 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2016: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2016-first-stronghold-robot.jpg" alt="FRC 1802 2016 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2016-first-stronghold-team.jpg" alt="FRC 1802 2016 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2016</span><span class="game">FIRST STRONGHOLD</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-alumlist">[4]</a></span></div>
@@ -342,8 +354,9 @@
       </article>
       <article class="season" id="frc1802-2017">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2017-first-steamworks-robot.jpg" alt="FRC 1802 2017 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2017-first-steamworks-team.jpg" alt="FRC 1802 2017 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2017: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2017-first-steamworks-robot.jpg" alt="FRC 1802 2017 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2017-first-steamworks-team.jpg" alt="FRC 1802 2017 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2017</span><span class="game">FIRST STEAMWORKS</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-alumlist">[4]</a></span></div>
@@ -352,8 +365,9 @@
       </article>
       <article class="season" id="frc1802-2018">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2018-first-power-up-robot.jpg" alt="FRC 1802 2018 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2018-first-power-up-team.jpg" alt="FRC 1802 2018 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2018: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2018-first-power-up-robot.jpg" alt="FRC 1802 2018 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2018-first-power-up-team.jpg" alt="FRC 1802 2018 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2018</span><span class="game">FIRST POWER UP</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-chairman17">[6]</a><a class="ref" href="#src-caw">[7]</a><a class="ref" href="#src-alumlist">[4]</a></span></div>
@@ -362,8 +376,9 @@
       </article>
       <article class="season" id="frc1802-2019">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2019-destination-deep-space-robot.jpg" alt="FRC 1802 2019 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2019-destination-deep-space-team.jpg" alt="FRC 1802 2019 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2019: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2019-destination-deep-space-robot.jpg" alt="FRC 1802 2019 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2019-destination-deep-space-team.jpg" alt="FRC 1802 2019 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2019</span><span class="game">DESTINATION: DEEP SPACE</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-caw">[7]</a><a class="ref" href="#src-list1819">[8]</a><a class="ref" href="#src-timeclock">[5]</a></span></div>
@@ -372,8 +387,9 @@
       </article>
       <article class="season" id="frc1802-2020">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2020-infinite-recharge-robot.jpg" alt="FRC 1802 2020 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2020-infinite-recharge-team.jpg" alt="FRC 1802 2020 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2020: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2020-infinite-recharge-robot.jpg" alt="FRC 1802 2020 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2020-infinite-recharge-team.jpg" alt="FRC 1802 2020 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2020</span><span class="game">INFINITE RECHARGE</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a></span></div>
@@ -382,8 +398,9 @@
       </article>
       <article class="season" id="frc1802-2021">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2021-infinite-recharge-at-home-robot.jpg" alt="FRC 1802 2021 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2021-infinite-recharge-at-home-team.jpg" alt="FRC 1802 2021 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2021: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2021-infinite-recharge-at-home-robot.jpg" alt="FRC 1802 2021 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2021-infinite-recharge-at-home-team.jpg" alt="FRC 1802 2021 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2021</span><span class="game">INFINITE RECHARGE at Home</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-timeclock">[5]</a></span></div>
@@ -392,8 +409,9 @@
       </article>
       <article class="season" id="frc1802-2022">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2022-rapid-react-robot.jpg" alt="FRC 1802 2022 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2022-rapid-react-team.jpg" alt="FRC 1802 2022 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2022: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2022-rapid-react-robot.jpg" alt="FRC 1802 2022 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2022-rapid-react-team.jpg" alt="FRC 1802 2022 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2022</span><span class="game">RAPID REACT</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-roboinfo">[9]</a></span></div>
@@ -402,8 +420,9 @@
       </article>
       <article class="season" id="frc1802-2023">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2023-charged-up-robot.jpg" alt="FRC 1802 2023 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2023-charged-up-team.jpg" alt="FRC 1802 2023 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2023: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2023-charged-up-robot.jpg" alt="FRC 1802 2023 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2023-charged-up-team.jpg" alt="FRC 1802 2023 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2023</span><span class="game">CHARGED UP</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-pastmembers">[10]</a><a class="ref" href="#src-roboinfo">[9]</a><a class="ref" href="#src-timeclock">[5]</a><a class="ref note" href="#note-n2023ct">[j]</a></span></div>
@@ -412,8 +431,9 @@
       </article>
       <article class="season" id="frc1802-2024">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2024-crescendo-robot.jpg" alt="FRC 1802 2024 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2024-crescendo-team.jpg" alt="FRC 1802 2024 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2024: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2024-crescendo-robot.jpg" alt="FRC 1802 2024 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2024-crescendo-team.jpg" alt="FRC 1802 2024 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2024</span><span class="game">CRESCENDO</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-foundation">[11]</a><a class="ref" href="#src-pastmembers">[10]</a><a class="ref" href="#src-roboinfo">[9]</a></span></div>
@@ -422,8 +442,9 @@
       </article>
       <article class="season" id="frc1802-2025">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2025-reefscape-robot.jpg" alt="FRC 1802 2025 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2025-reefscape-team.jpg" alt="FRC 1802 2025 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2025: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2025-reefscape-robot.jpg" alt="FRC 1802 2025 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2025-reefscape-team.jpg" alt="FRC 1802 2025 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2025</span><span class="game">REEFSCAPE</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-pnn">[12]</a><a class="ref" href="#src-impact25">[13]</a><a class="ref" href="#src-pastmembers">[10]</a><a class="ref" href="#src-roboinfo">[9]</a><a class="ref note" href="#note-n2025mokan">[k]</a></span></div>
@@ -432,8 +453,9 @@
       </article>
       <article class="season" id="frc1802-2026">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2026-rebuilt-robot.jpg" alt="FRC 1802 2026 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2026-rebuilt-team.jpg" alt="FRC 1802 2026 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2026: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2026-rebuilt-robot.jpg" alt="FRC 1802 2026 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2026-rebuilt-team.jpg" alt="FRC 1802 2026 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2026</span><span class="game">REBUILT</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-tba">[2]</a><a class="ref" href="#src-foundation">[11]</a><a class="ref" href="#src-timeclock">[5]</a><a class="ref" href="#src-roboinfo">[9]</a><a class="ref note" href="#note-nrank">[l]</a></span></div>
@@ -442,8 +464,9 @@
       </article>
       <article class="season" id="frc1802-2027">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2027-biocore-robot.jpg" alt="FRC 1802 2027 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2027-biocore-team.jpg" alt="FRC 1802 2027 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FRC 1802 2027: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2027-biocore-robot.jpg" alt="FRC 1802 2027 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2027-biocore-team.jpg" alt="FRC 1802 2027 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2027</span><span class="game">BIOCORE</span><span class="refs"><a class="ref" href="#src-frcev">[1]</a><a class="ref" href="#src-info2627">[14]</a></span></div>
@@ -471,8 +494,9 @@
       <div class="seasons">
       <article class="season" id="ftc21536-2022">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc21536-2022-powerplay-robot.jpg" alt="FTC 21536 2022–23 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc21536-2022-powerplay-team.jpg" alt="FTC 21536 2022–23 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 21536 2022–23: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc21536-2022-powerplay-robot.jpg" alt="FTC 21536 2022–23 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc21536-2022-powerplay-team.jpg" alt="FTC 21536 2022–23 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2022–23</span><span class="game">POWERPLAY</span><span class="refs"><a class="ref" href="#src-ftc21536">[15]</a><a class="ref" href="#src-pastmembers">[10]</a><a class="ref" href="#src-impact25">[13]</a><a class="ref" href="#src-portfolios">[16]</a><a class="ref note" href="#note-n21536founding">[m]</a></span></div>
@@ -481,8 +505,9 @@
       </article>
       <article class="season" id="ftc21536-2023">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc21536-2023-centerstage-robot.jpg" alt="FTC 21536 2023–24 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc21536-2023-centerstage-team.jpg" alt="FTC 21536 2023–24 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 21536 2023–24: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc21536-2023-centerstage-robot.jpg" alt="FTC 21536 2023–24 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc21536-2023-centerstage-team.jpg" alt="FTC 21536 2023–24 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2023–24</span><span class="game">CENTERSTAGE</span><span class="refs"><a class="ref" href="#src-ftc21536">[15]</a><a class="ref" href="#src-pastmembers">[10]</a><a class="ref" href="#src-portfolios">[16]</a></span></div>
@@ -491,8 +516,9 @@
       </article>
       <article class="season" id="ftc21536-2024">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc21536-2024-into-the-deep-robot.jpg" alt="FTC 21536 2024–25 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc21536-2024-into-the-deep-team.jpg" alt="FTC 21536 2024–25 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 21536 2024–25: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc21536-2024-into-the-deep-robot.jpg" alt="FTC 21536 2024–25 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc21536-2024-into-the-deep-team.jpg" alt="FTC 21536 2024–25 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2024–25</span><span class="game">INTO THE DEEP</span><span class="refs"><a class="ref" href="#src-ftc21536">[15]</a><a class="ref" href="#src-impact25">[13]</a><a class="ref" href="#src-pastmembers">[10]</a><a class="ref" href="#src-portfolios">[16]</a><a class="ref note" href="#note-nrank">[l]</a></span></div>
@@ -501,8 +527,9 @@
       </article>
       <article class="season" id="ftc21536-2025">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc21536-2025-decode-robot.jpg" alt="FTC 21536 2025–26 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc21536-2025-decode-team.jpg" alt="FTC 21536 2025–26 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 21536 2025–26: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc21536-2025-decode-robot.jpg" alt="FTC 21536 2025–26 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc21536-2025-decode-team.jpg" alt="FTC 21536 2025–26 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2025–26</span><span class="game">DECODE</span><span class="refs"><a class="ref" href="#src-ftc21536">[15]</a><a class="ref" href="#src-daa">[17]</a><a class="ref" href="#src-portfolios">[16]</a><a class="ref" href="#src-timeclock">[5]</a><a class="ref note" href="#note-nrank">[l]</a></span></div>
@@ -511,8 +538,9 @@
       </article>
       <article class="season" id="ftc21536-2026">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc21536-2026-biobuzz-robot.jpg" alt="FTC 21536 2026–27 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc21536-2026-biobuzz-team.jpg" alt="FTC 21536 2026–27 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 21536 2026–27: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc21536-2026-biobuzz-robot.jpg" alt="FTC 21536 2026–27 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc21536-2026-biobuzz-team.jpg" alt="FTC 21536 2026–27 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2026–27</span><span class="game">BIOBUZZ</span><span class="refs"><a class="ref" href="#src-ftc21536">[15]</a><a class="ref" href="#src-recap26">[18]</a><a class="ref" href="#src-info2627">[14]</a></span></div>
@@ -540,8 +568,9 @@
       <div class="seasons">
       <article class="season" id="ftc14213-2017">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2017-relic-recovery-robot.jpg" alt="FTC 14213 2017–18 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2017-relic-recovery-team.jpg" alt="FTC 14213 2017–18 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 14213 2017–18: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc14213-2017-relic-recovery-robot.jpg" alt="FTC 14213 2017–18 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc14213-2017-relic-recovery-team.jpg" alt="FTC 14213 2017–18 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2017–18</span><span class="game">RELIC RECOVERY</span><span class="refs"><a class="ref" href="#src-ftc14213">[19]</a><a class="ref" href="#src-foundation">[11]</a><a class="ref note" href="#note-n14213found">[n]</a></span></div>
@@ -550,8 +579,9 @@
       </article>
       <article class="season" id="ftc14213-2018">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2018-rover-ruckus-robot.jpg" alt="FTC 14213 2018–19 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2018-rover-ruckus-team.jpg" alt="FTC 14213 2018–19 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 14213 2018–19: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc14213-2018-rover-ruckus-robot.jpg" alt="FTC 14213 2018–19 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc14213-2018-rover-ruckus-team.jpg" alt="FTC 14213 2018–19 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2018–19</span><span class="game">ROVER RUCKUS</span><span class="refs"><a class="ref" href="#src-ftcstats">[20]</a></span></div>
@@ -560,8 +590,9 @@
       </article>
       <article class="season" id="ftc14213-2019">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2019-skystone-robot.jpg" alt="FTC 14213 2019–20 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2019-skystone-team.jpg" alt="FTC 14213 2019–20 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 14213 2019–20: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc14213-2019-skystone-robot.jpg" alt="FTC 14213 2019–20 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc14213-2019-skystone-team.jpg" alt="FTC 14213 2019–20 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2019–20</span><span class="game">SKYSTONE</span><span class="refs"><a class="ref" href="#src-ftc14213">[19]</a><a class="ref" href="#src-ftcstats">[20]</a><a class="ref" href="#src-joinnh19">[21]</a><a class="ref" href="#src-portfolios">[16]</a></span></div>
@@ -570,8 +601,9 @@
       </article>
       <article class="season" id="ftc14213-2020">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2020-ultimate-goal-robot.jpg" alt="FTC 14213 2020–21 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2020-ultimate-goal-team.jpg" alt="FTC 14213 2020–21 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 14213 2020–21: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc14213-2020-ultimate-goal-robot.jpg" alt="FTC 14213 2020–21 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc14213-2020-ultimate-goal-team.jpg" alt="FTC 14213 2020–21 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2020–21</span><span class="game">ULTIMATE GOAL</span><span class="refs"><a class="ref" href="#src-ftc14213">[19]</a></span></div>
@@ -580,8 +612,9 @@
       </article>
       <article class="season" id="ftc14213-2021">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2021-freight-frenzy-robot.jpg" alt="FTC 14213 2021–22 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2021-freight-frenzy-team.jpg" alt="FTC 14213 2021–22 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 14213 2021–22: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc14213-2021-freight-frenzy-robot.jpg" alt="FTC 14213 2021–22 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc14213-2021-freight-frenzy-team.jpg" alt="FTC 14213 2021–22 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2021–22</span><span class="game">FREIGHT FRENZY</span><span class="refs"><a class="ref" href="#src-ftc14213">[19]</a><a class="ref" href="#src-kcftc22">[22]</a><a class="ref" href="#src-roboinfo">[9]</a></span></div>
@@ -590,8 +623,9 @@
       </article>
       <article class="season" id="ftc14213-2022">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2022-powerplay-robot.jpg" alt="FTC 14213 2022–23 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2022-powerplay-team.jpg" alt="FTC 14213 2022–23 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 14213 2022–23: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc14213-2022-powerplay-robot.jpg" alt="FTC 14213 2022–23 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc14213-2022-powerplay-team.jpg" alt="FTC 14213 2022–23 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2022–23</span><span class="game">POWERPLAY</span><span class="refs"><a class="ref" href="#src-ftc14213">[19]</a><a class="ref" href="#src-portfolios">[16]</a></span></div>
@@ -600,8 +634,9 @@
       </article>
       <article class="season" id="ftc14213-2023">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2023-centerstage-robot.jpg" alt="FTC 14213 2023–24 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2023-centerstage-team.jpg" alt="FTC 14213 2023–24 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 14213 2023–24: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc14213-2023-centerstage-robot.jpg" alt="FTC 14213 2023–24 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc14213-2023-centerstage-team.jpg" alt="FTC 14213 2023–24 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2023–24</span><span class="game">CENTERSTAGE</span><span class="refs"><a class="ref" href="#src-ftc14213">[19]</a><a class="ref" href="#src-impact25">[13]</a></span></div>
@@ -610,8 +645,9 @@
       </article>
       <article class="season" id="ftc14213-2024">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2024-into-the-deep-robot.jpg" alt="FTC 14213 2024–25 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2024-into-the-deep-team.jpg" alt="FTC 14213 2024–25 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 14213 2024–25: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc14213-2024-into-the-deep-robot.jpg" alt="FTC 14213 2024–25 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc14213-2024-into-the-deep-team.jpg" alt="FTC 14213 2024–25 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2024–25</span><span class="game">INTO THE DEEP</span><span class="refs"><a class="ref" href="#src-ftc14213">[19]</a><a class="ref" href="#src-nhlog">[23]</a><a class="ref" href="#src-impact25">[13]</a></span></div>
@@ -620,8 +656,9 @@
       </article>
       <article class="season" id="ftc14213-2025">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2025-decode-robot.jpg" alt="FTC 14213 2025–26 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2025-decode-team.jpg" alt="FTC 14213 2025–26 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 14213 2025–26: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc14213-2025-decode-robot.jpg" alt="FTC 14213 2025–26 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc14213-2025-decode-team.jpg" alt="FTC 14213 2025–26 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2025–26</span><span class="game">DECODE</span><span class="refs"><a class="ref" href="#src-ftc14213">[19]</a><a class="ref" href="#src-portfolios">[16]</a></span></div>
@@ -630,8 +667,9 @@
       </article>
       <article class="season" id="ftc14213-2026">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2026-biobuzz-robot.jpg" alt="FTC 14213 2026–27 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2026-biobuzz-team.jpg" alt="FTC 14213 2026–27 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FTC 14213 2026–27: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/ftc14213-2026-biobuzz-robot.jpg" alt="FTC 14213 2026–27 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/ftc14213-2026-biobuzz-team.jpg" alt="FTC 14213 2026–27 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2026–27</span><span class="game">BIOBUZZ</span><span class="refs"><a class="ref" href="#src-ftc14213">[19]</a><a class="ref" href="#src-recap26">[18]</a></span></div>
@@ -659,8 +697,9 @@
       <div class="seasons">
       <article class="season" id="fll623-2005">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2005-early-seasons-robot.jpg" alt="FLL 623 2005–2020 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2005-early-seasons-team.jpg" alt="FLL 623 2005–2020 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FLL 623 2005–2020: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/fll623-2005-early-seasons-robot.jpg" alt="FLL 623 2005–2020 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/fll623-2005-early-seasons-team.jpg" alt="FLL 623 2005–2020 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2005–2020</span><span class="game">Early seasons</span><span class="refs"><a class="ref" href="#src-foundation">[11]</a><a class="ref" href="#src-website">[3]</a><a class="ref" href="#src-chairman17">[6]</a><a class="ref note" href="#note-nfll2005">[o]</a></span></div>
@@ -669,8 +708,9 @@
       </article>
       <article class="season" id="fll623-2021">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2021-cargo-connect-robot.jpg" alt="FLL 623 2021–22 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2021-cargo-connect-team.jpg" alt="FLL 623 2021–22 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FLL 623 2021–22: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/fll623-2021-cargo-connect-robot.jpg" alt="FLL 623 2021–22 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/fll623-2021-cargo-connect-team.jpg" alt="FLL 623 2021–22 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2021–22</span><span class="game">CARGO CONNECT</span><span class="refs"><a class="ref" href="#src-kcfll22">[24]</a><a class="ref" href="#src-foundation">[11]</a><a class="ref note" href="#note-nfll2122">[p]</a></span></div>
@@ -679,8 +719,9 @@
       </article>
       <article class="season" id="fll623-2022">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2022-superpowered-robot.jpg" alt="FLL 623 2022–23 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2022-superpowered-team.jpg" alt="FLL 623 2022–23 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FLL 623 2022–23: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/fll623-2022-superpowered-robot.jpg" alt="FLL 623 2022–23 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/fll623-2022-superpowered-team.jpg" alt="FLL 623 2022–23 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2022–23</span><span class="game">SUPERPOWERED</span><span class="refs"><a class="ref" href="#src-foundation">[11]</a><a class="ref" href="#src-fllblog">[25]</a><a class="ref note" href="#note-nfll2223">[q]</a></span></div>
@@ -689,8 +730,9 @@
       </article>
       <article class="season" id="fll623-2023">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2023-masterpiece-robot.jpg" alt="FLL 623 2023–24 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2023-masterpiece-team.jpg" alt="FLL 623 2023–24 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FLL 623 2023–24: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/fll623-2023-masterpiece-robot.jpg" alt="FLL 623 2023–24 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/fll623-2023-masterpiece-team.jpg" alt="FLL 623 2023–24 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2023–24</span><span class="game">MASTERPIECE</span><span class="refs"><a class="ref" href="#src-foundation">[11]</a><a class="ref" href="#src-kcstem">[26]</a><a class="ref" href="#src-impact25">[13]</a></span></div>
@@ -699,8 +741,9 @@
       </article>
       <article class="season" id="fll623-2024">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2024-submerged-robot.jpg" alt="FLL 623 2024–25 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2024-submerged-team.jpg" alt="FLL 623 2024–25 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FLL 623 2024–25: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/fll623-2024-submerged-robot.jpg" alt="FLL 623 2024–25 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/fll623-2024-submerged-team.jpg" alt="FLL 623 2024–25 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2024–25</span><span class="game">SUBMERGED</span><span class="refs"><a class="ref" href="#src-impact25">[13]</a><a class="ref" href="#src-roboinfo">[9]</a></span></div>
@@ -709,8 +752,9 @@
       </article>
       <article class="season" id="fll623-2025">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2025-unearthed-robot.jpg" alt="FLL 623 2025–26 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2025-unearthed-team.jpg" alt="FLL 623 2025–26 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FLL 623 2025–26: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/fll623-2025-unearthed-robot.jpg" alt="FLL 623 2025–26 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/fll623-2025-unearthed-team.jpg" alt="FLL 623 2025–26 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2025–26</span><span class="game">UNEARTHED</span><span class="refs"></span></div>
@@ -719,8 +763,9 @@
       </article>
       <article class="season" id="fll623-2026">
         <div class="photos">
-          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2026-bioglow-robot.jpg" alt="FLL 623 2026–27 robot" loading="lazy" onerror="this.remove()"></figure>
-          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2026-bioglow-team.jpg" alt="FLL 623 2026–27 team" loading="lazy" onerror="this.remove()"></figure>
+          <!-- Photos for FLL 623 2026–27: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/fll623-2026-bioglow-robot.jpg" alt="FLL 623 2026–27 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/fll623-2026-bioglow-team.jpg" alt="FLL 623 2026–27 team photo" width="400" height="300">
         </div>
         <div class="s-body">
           <div class="s-head"><span class="yr">2026–27</span><span class="game">BIOGLOW</span><span class="refs"><a class="ref" href="#src-info2627">[14]</a></span></div>
