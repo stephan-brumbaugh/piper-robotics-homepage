@@ -55,8 +55,6 @@ ftc21536-2025-decode-robot.jpg
 ftc21536-2025-decode-team.jpg
 ftc21536-2026-biobuzz-robot.jpg
 ftc21536-2026-biobuzz-team.jpg
-ftc14213-2017-relic-recovery-robot.jpg
-ftc14213-2017-relic-recovery-team.jpg
 ftc14213-2018-rover-ruckus-robot.jpg
 ftc14213-2018-rover-ruckus-team.jpg
 ftc14213-2019-skystone-robot.jpg
@@ -75,17 +73,10 @@ ftc14213-2025-decode-robot.jpg
 ftc14213-2025-decode-team.jpg
 ftc14213-2026-biobuzz-robot.jpg
 ftc14213-2026-biobuzz-team.jpg
-fll623-2005-early-seasons-robot.jpg
 fll623-2005-early-seasons-team.jpg
-fll623-2021-cargo-connect-robot.jpg
 fll623-2021-cargo-connect-team.jpg
-fll623-2022-superpowered-robot.jpg
 fll623-2022-superpowered-team.jpg
-fll623-2023-masterpiece-robot.jpg
 fll623-2023-masterpiece-team.jpg
-fll623-2024-submerged-robot.jpg
 fll623-2024-submerged-team.jpg
-fll623-2025-unearthed-robot.jpg
 fll623-2025-unearthed-team.jpg
-fll623-2026-bioglow-robot.jpg
 fll623-2026-bioglow-team.jpg
