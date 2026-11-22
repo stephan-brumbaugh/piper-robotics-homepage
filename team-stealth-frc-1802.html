@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team Stealth FRC 1802 · Piper Robotics</title>
+<meta name="description" content="Team Stealth (FRC 1802), a Piper Robotics team in Kansas City, Kansas.">
+<link rel="icon" href="assets/piper-robotics-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-900: #24103f; --purple-800: #331660; --purple-700: #4a2a85;
+    --purple-600: #5b33a3; --purple-500: #7444c9; --purple-100: #ece4f8; --purple-50: #f7f3fd;
+    --ink: #1d1530; --muted: #5c5470; --line: #e2d9f1; --white: #fff; --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 130px; }
+  body { margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--white); line-height: 1.6; }
+  a { color: var(--purple-600); }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  header.top { position: sticky; top: 0; z-index: 20; background: rgba(36,16,63,.97); backdrop-filter: blur(8px); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+  .brand { display: flex; align-items: center; background: var(--white); border-radius: 10px; padding: 5px 10px; }
+  .brand img { height: 40px; width: auto; }
+  nav.links { display: flex; gap: 22px; font-size: 15px; }
+  nav.links a { color: #e0d4f7; text-decoration: none; font-weight: 500; }
+  nav.links a:hover, nav.links a[aria-current] { color: var(--white); }
+  @media (max-width: 760px) { nav.links { display: none; } }
+
+  /* Team tabs (sticky under header) */
+  .tabs { position: sticky; top: 68px; z-index: 15; background: var(--white); border-bottom: 1px solid var(--line); }
+  .tabs .wrap { display: flex; gap: 8px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; scrollbar-width: none; }
+  .tabs a { flex: none; text-decoration: none; font-size: 14px; font-weight: 600; color: var(--purple-700); background: var(--purple-50); border: 1px solid var(--line); padding: 7px 14px; border-radius: 999px; white-space: nowrap; }
+  .tabs a:hover { background: var(--purple-100); }
+
+  .hero { background: radial-gradient(900px 400px at 85% -10%, rgba(116,68,201,.55), transparent 60%), var(--purple-900); color: var(--white); padding: 56px 0 64px; }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #cdb8f7; margin-bottom: 12px; }
+  .hero h1 { font-size: clamp(34px, 5.5vw, 54px); line-height: 1.07; margin: 0 0 16px; font-weight: 800; letter-spacing: -1px; }
+  .hero p { font-size: 18px; color: #e0d4f7; max-width: 720px; margin: 0; }
+
+  section { padding: 64px 0; }
+  h2 { font-size: clamp(28px, 4vw, 38px); margin: 0 0 6px; letter-spacing: -.5px; color: var(--purple-900); }
+
+  /* Program milestones */
+  .milestones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; }
+  .ms { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+  .ms b { display: block; color: var(--purple-600); font-size: 22px; }
+  .ms span { font-size: 12px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; color: var(--purple-700); }
+  .ms p { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
+  @media (max-width: 1060px) { .milestones { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .milestones { grid-template-columns: 1fr; } }
+
+  /* Team sections */
+  .team-sec:nth-of-type(even) { background: var(--purple-50); }
+  .team-head { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: center; }
+  .team-logo { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: grid; place-items: center; height: 180px; }
+  .team-logo img { max-height: 144px; width: auto; }
+  .badge { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--purple-700); background: var(--purple-100); padding: 4px 10px; border-radius: 999px; margin-bottom: 8px; }
+  .motto { margin: 0 0 10px; color: var(--purple-700); }
+  .motto em { font-weight: 700; }
+  .intro { margin: 0; font-size: 17px; }
+  @media (max-width: 760px) { .team-head { grid-template-columns: 1fr; gap: 20px; } .team-logo { height: 150px; } .team-logo img { max-height: 114px; } }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0 8px; }
+  .stat { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
+  .stat b { display: block; font-size: 26px; color: var(--purple-600); line-height: 1.15; }
+  .stat small { color: var(--muted); font-size: 14px; }
+  @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+  .seasons-title { font-size: 20px; color: var(--purple-900); margin: 36px 0 16px; }
+  .seasons { display: grid; gap: 16px; }
+  .season { display: grid; grid-template-columns: 300px 1fr; gap: 22px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+  @media (max-width: 760px) { .season { grid-template-columns: 1fr; } }
+  .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start; }
+  .ph { position: relative; margin: 0; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; background: repeating-linear-gradient(135deg, var(--purple-50), var(--purple-50) 10px, var(--purple-100) 10px, var(--purple-100) 20px); border: 1px dashed #c9b8e8; }
+  .ph::after { content: attr(data-label); position: absolute; inset: 0; display: grid; place-items: center; text-align: center; font-size: 12px; font-weight: 600; color: var(--purple-700); padding: 6px; }
+  .season-photo { display: block; min-width: 0; max-width: 100%; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; border: 1px dashed #c9b8e8; background: var(--purple-50); color: var(--purple-700); font-size: 12px; }
+  .s-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 8px; }
+  .yr { font-size: 22px; font-weight: 800; color: var(--purple-600); }
+  .game { font-weight: 700; color: var(--purple-900); letter-spacing: .3px; }
+  dl { margin: 0 0 10px; display: grid; gap: 4px; }
+  dl div { display: grid; grid-template-columns: 120px 1fr; gap: 10px; font-size: 15px; }
+  dt { color: var(--muted); }
+  dd { margin: 0; }
+  @media (max-width: 520px) { dl div { grid-template-columns: 1fr; gap: 0; } dt { font-size: 13px; } }
+  .awards { list-style: none; margin: 0 0 10px; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .awards li { font-size: 13px; font-weight: 600; color: var(--purple-800); background: var(--purple-100); border-radius: 8px; padding: 4px 10px; }
+  .awards li::before { content: "★ "; color: var(--purple-500); }
+  .s-body p { margin: 0 0 8px; color: var(--muted); font-size: 15px; }
+  .s-body p.todo { font-style: italic; color: #8a80a0; }
+  .video { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; margin-top: 8px; background: #000; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .back { margin: 20px 0 0; font-size: 14px; }
+  .mission { margin: 16px 0 0; padding: 16px 20px; border-left: 4px solid var(--purple-500); background: var(--white); border-radius: 0 12px 12px 0; }
+  .mission p { margin: 0 0 8px; font-style: italic; color: var(--ink); font-size: 15px; }
+  .mission .src { font-size: 13px; color: var(--muted); }
+  .s-body details { margin: 8px 0; border: 1px solid var(--line); border-radius: 10px; background: var(--purple-50); }
+  .s-body summary { cursor: pointer; padding: 8px 12px; font-size: 14px; font-weight: 600; color: var(--purple-700); }
+  .s-body details ul { margin: 0; padding: 0 14px 10px 30px; font-size: 14px; color: var(--ink); }
+  .s-body details li { margin-bottom: 4px; }
+  .s-body details dl.ppl { padding: 0 12px 10px; margin: 0; }
+  .s-body details dl.ppl div { grid-template-columns: 170px 1fr; font-size: 14px; }
+  @media (max-width: 520px) { .s-body details dl.ppl div { grid-template-columns: 1fr; } }
+  .s-body .media { font-size: 14px; }
+  .rec { margin-top: 8px; font-size: 13px; color: var(--muted); border-left: 3px solid #d8c9f0; padding: 4px 0 4px 12px; }
+  .rec b { font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: var(--purple-700); }
+  .rec ul { margin: 4px 0 0; padding-left: 18px; }
+
+  /* Archive */
+  #archive { background: var(--purple-50); }
+  .archive-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px; align-items: start; }
+  @media (max-width: 860px) { .archive-grid { grid-template-columns: 1fr; } }
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
+  .card h3 { margin: 0 0 8px; color: var(--purple-900); font-size: 18px; }
+  .card p, .card li { font-size: 15px; color: var(--muted); }
+  .card p { margin: 0 0 10px; }
+  .card ul { margin: 0 0 10px; padding-left: 20px; }
+  .card.wide { grid-column: 1 / -1; }
+  .alumni { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 20px; }
+  @media (max-width: 960px) { .alumni { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .alumni { grid-template-columns: 1fr; } }
+  .alum h4 { margin: 0 0 8px; color: var(--purple-600); font-size: 16px; }
+  .alum ul { list-style: none; margin: 0; padding: 0; }
+  .alum li { font-size: 14px; color: var(--muted); margin-bottom: 6px; }
+  .alum li b { color: var(--ink); font-weight: 600; }
+  .refs { font-size: 12px; font-weight: 600; }
+  h2 .refs { font-size: 14px; vertical-align: super; }
+  a.ref { text-decoration: none; color: var(--purple-500); margin-left: 2px; }
+  a.ref.note { color: #b0457a; }
+  .appendix { background: var(--purple-50); }
+  .appendix h3 { color: var(--purple-900); margin: 28px 0 10px; font-size: 20px; }
+  .notes-list, .src-list, .doc-list { margin: 0; padding-left: 26px; font-size: 15px; color: var(--muted); }
+  .notes-list { list-style: none; padding-left: 0; }
+  .notes-list li, .src-list li, .doc-list li { margin-bottom: 10px; }
+  .notes-list li:target, .src-list li:target { background: var(--purple-100); border-radius: 8px; }
+  .back-links { display: block; font-size: 13px; margin-top: 2px; }
+  .back-links a { margin-right: 10px; }
+
+  .more { background: linear-gradient(120deg, var(--purple-700), var(--purple-900)); color: var(--white); border-radius: 24px; padding: 36px; }
+  .more h2 { color: var(--white); }
+  .more p { color: #e0d4f7; margin: 0 0 16px; }
+  .more .links2 { display: flex; flex-wrap: wrap; gap: 10px; }
+  .more .links2 a { color: var(--purple-800); background: var(--white); text-decoration: none; font-weight: 600; font-size: 14px; padding: 9px 14px; border-radius: 10px; }
+
+  footer { background: var(--purple-900); color: #cdb8f7; padding: 40px 0 28px; font-size: 15px; }
+  footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+  footer h4 { color: var(--white); margin: 0 0 12px; font-size: 15px; }
+  footer a { color: #e0d4f7; text-decoration: none; display: block; margin-bottom: 8px; }
+  footer a:hover { color: var(--white); text-decoration: underline; }
+  footer .fine { border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 18px; font-size: 13px; color: #a995d1; }
+  @media (max-width: 760px) { footer .cols { grid-template-columns: 1fr; } }
+  .season-photo { cursor: zoom-in; }
+  .season-photo.broken { cursor: default; }
+  .lightbox { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(16, 8, 30, .92); }
+  .lightbox[hidden] { display: none; }
+  .lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; max-width: 100%; max-height: 100%; }
+  .lightbox img { max-width: 100%; max-height: calc(100vh - 90px); width: auto; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+  .lightbox figcaption { color: #e0d4f7; font-size: 14px; text-align: center; }
+  .lightbox button { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255,255,255,.14); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; }
+  .lightbox button:hover, .lightbox button:focus-visible { background: rgba(255,255,255,.28); outline: 2px solid #fff; }
+
+  .team-hero { background: radial-gradient(900px 400px at 85% -10%, rgba(116,68,201,.55), transparent 60%), var(--purple-900); color: var(--white); padding: 48px 0 56px; }
+  .team-hero .wrap { display: grid; grid-template-columns: 200px 1fr; gap: 32px; align-items: center; }
+  .team-hero .logo-box { background: var(--white); border-radius: var(--radius); padding: 16px; display: grid; place-items: center; height: 180px; }
+  .team-hero .logo-box img { max-height: 150px; width: auto; }
+  .team-hero h1 { font-size: clamp(32px, 5vw, 50px); line-height: 1.07; margin: 0 0 10px; font-weight: 800; letter-spacing: -1px; }
+  .team-hero p { color: #e0d4f7; font-size: 18px; margin: 0; max-width: 680px; }
+  .team-hero .motto-l { font-size: 16px; margin-top: 12px; color: #cdb8f7; }
+  @media (max-width: 700px) { .team-hero .wrap { grid-template-columns: 1fr; } .team-hero .logo-box { width: 180px; } }
+  .lead2 { font-size: 17px; color: var(--muted); max-width: 820px; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 22px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+  @media (max-width: 900px) { .grid3 { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+  .tint-bg { background: var(--purple-50); }
+  .socials { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; margin-top: 20px; }
+  .socials a { display: block; text-decoration: none; background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; color: var(--ink); min-width: 0; }
+  .socials a:hover { border-color: var(--purple-500); }
+  .socials b { display: block; color: var(--purple-700); font-size: 13px; text-transform: uppercase; letter-spacing: .6px; }
+  .socials span { font-size: 15px; overflow-wrap: anywhere; }
+  .socials h3 { grid-column: 1 / -1; margin: 10px 0 0; font-size: 16px; color: var(--purple-900); }
+  .cta { display: inline-block; background: var(--white); color: var(--purple-800); font-weight: 700; text-decoration: none; padding: 13px 22px; border-radius: 12px; margin-top: 6px; }
+  .cta:hover { background: var(--purple-100); }
+  .cta.dark { background: var(--purple-700); color: var(--white); }
+  .cta.dark:hover { background: var(--purple-600); }
+  .steps { margin: 12px 0 18px; padding-left: 22px; color: #e0d4f7; }
+  .steps li { margin-bottom: 6px; }
+  .game-name { font-size: clamp(26px, 4vw, 34px); font-weight: 800; color: var(--purple-700); margin: 0; letter-spacing: -.5px; }
+  .game-sub { color: var(--muted); margin: 2px 0 14px; font-weight: 600; }
+  .small { font-size: 13px; color: var(--muted); }
+  .tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 20px; }
+  .tier { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+  .tier b { display: block; font-size: 22px; color: var(--purple-600); }
+  .tier span { font-size: 12px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; color: var(--purple-700); }
+  .tier p { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
+  ul.contact { list-style: none; padding: 0; margin: 12px 0 0; }
+  .contact li { padding: 10px 0; border-top: 1px solid var(--line); font-size: 15px; overflow-wrap: anywhere; }
+  .contact li b { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: var(--purple-700); }
+  .show-date { font-size: 20px; font-weight: 800; color: var(--purple-900); }
+  .sched { list-style: none; padding: 0; margin: 10px 0 0; }
+  .sched li { display: grid; grid-template-columns: 100px 1fr; gap: 10px; padding: 6px 0; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+  .sched li b { color: var(--purple-700); }
+</style>
+</head>
+<body id="top">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Piper Robotics home"><img src="assets/piper-robotics-logo.png" alt="Piper Robotics"></a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="index.html#teams">Teams</a>
+      <a href="history.html">History</a>
+      <a href="fundraising.html">Support Us</a>
+      <a href="https://scout.piperrobotics.net">Scout App</a>
+      <a href="https://parent.piperrobotics.net">Parent App</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="On this page"><div class="wrap"><a href="#about">About</a><a href="#season">This season</a><a href="#join">Join</a><a href="#follow">Follow us</a><a href="#history">Season history</a></div></nav>
+<main>
+  <div class="team-hero">
+    <div class="wrap">
+      <div class="logo-box"><img src="assets/frc-1802.png" alt="Team Stealth FRC 1802 logo"></div>
+      <div>
+        <span class="eyebrow">FRC 1802 · <em>FIRST</em> Robotics Competition</span>
+        <h1>Team Stealth</h1>
+        <p>Piper&#x27;s original team. Team Stealth was formed in September 2005 and has built a full-size competition robot every season since 2006. Over the years the team has been supported by the Ewing Marion Kauffman Foundation (founding sponsor), Black &amp; Veatch, JCPenney, Northrop Grumman, Honeywell, Kastle Grinding, KC STEM Alliance, The Boeing Company, the Piper Robotics Alumni Foundation and many local businesses.</p>
+        <p class="motto-l"><em>Tempus Fugit</em> · Time flies</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <h2>Our story</h2>
+      <p class="lead2">Team Stealth is where Piper Robotics began. In 2005 a student's wish for AP Physics led Dr. Becky Knetter to start a robotics team, and Team Stealth 1802 built its first full-size robot, Knight Hawk, for the 2006 season.</p><p class="lead2">Two years later the team won the 2008 Greater Kansas City Regional and competed at the <em>FIRST</em> Championship. Since then it has collected awards for imagery, quality, gracious professionalism and more, won the 2019 Cow Town ThrowDown, and returned to the Championship in 2023 after a finalist run at the Greater Kansas City Regional. Today it's a student-run team that also runs FTC 21536, mentors Piper's younger teams and hosts league events in its 3,445 sq ft shop.</p>
+      <div class="stats"><div class="stat"><b>2006</b><small>Rookie year</small></div><div class="stat"><b>2</b><small>Event wins (2008 GKC, 2019 Cow Town)</small></div><div class="stat"><b>2</b><small>FIRST Championship trips</small></div><div class="stat"><b>11</b><small>Official FIRST awards</small></div></div>
+    </div>
+  </section>
+
+  <section id="season" class="tint-bg">
+    <div class="wrap">
+      <span class="badge">2026–27 season · <em>FIRST</em> CANOPY</span>
+      <p class="game-name">BIOCORE</p>
+      <p class="game-sub">presented by Haas · 2027 FIRST Robotics Competition season</p>
+      <div class="card"><p>The 2026–27 <em>FIRST</em> season is called <em>FIRST</em> CANOPY, and every program's challenge this year is built around biodiversity and the natural world. For the <em>FIRST</em> Robotics Competition, <em>FIRST</em> says teams will "delve into the heart of what sustains life on Earth."</p><p>The full game is revealed at Kickoff on <b>January 9, 2027</b>. That starts the build season, when the team has about eight weeks to design, build and program a full-size robot. Early previews say the game uses a single type of scoring element and robots can hold more than one at a time. It's also the first season on <em>FIRST</em>'s new SystemCore control system, which replaces the roboRIO the team has used for years.</p><p>Team Stealth is registered for the City of Fountains Regional, March 31 to April 3, 2027.</p><p><b>Where we are:</b> So far this season the team is preparing for Kickoff on January 9 and the City of Fountains Regional in the spring.</p><p class="small"><a href="https://www.firstinspires.org/programs/frc/game-and-season" target="_blank" rel="noopener">FRC game &amp; season (FIRST)</a> · <a href="https://www.firstinspires.org/first-canopy" target="_blank" rel="noopener">About FIRST CANOPY</a></p></div>
+    </div>
+  </section>
+
+  <section id="join">
+    <div class="wrap">
+      <div class="more">
+        <h2>Join Team Stealth</h2>
+        <p><b>Who can join:</b> High school (grades 9–12)</p>
+        <p>Team Stealth is open to Piper High School students. No experience is needed; members learn building, CAD, programming, wiring, business, outreach and media by doing.</p><p>High school members of Team Stealth are on both the FRC team (1802) and the FTC team (21536).</p>
+        <ol class="steps">
+          <li>Fill out the Piper Robotics Team Interest Form. One form covers every Piper Robotics team.</li>
+          <li>A coach will reach out with meeting times and next steps.</li>
+          <li>Come to a meeting and see the shop.</li>
+        </ol>
+        <a class="cta" href="https://docs.google.com/forms/d/1i7WMFQHmWC0XnVkoC4fEGkVsF_xZfCZ4K28F5WMgNWs/viewform" target="_blank" rel="noopener">Open the interest form →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="follow" class="tint-bg">
+    <div class="wrap">
+      <h2>Follow us</h2>
+      <div class="socials"><h3>Team Stealth 1802</h3><a href="https://www.instagram.com/teamstealth1802/" target="_blank" rel="noopener"><b>Instagram</b><span>@teamstealth1802</span></a><a href="https://www.facebook.com/firstteamstealth1802/" target="_blank" rel="noopener"><b>Facebook</b><span>FIRST Team Stealth 1802</span></a><a href="https://x.com/TeamStealth1802" target="_blank" rel="noopener"><b>X (Twitter)</b><span>@TeamStealth1802</span></a><a href="mailto:teamstealth1802@gmail.com" target="_blank" rel="noopener"><b>Email</b><span>teamstealth1802@gmail.com</span></a><h3>Piper Robotics (all teams)</h3><a href="https://www.instagram.com/piperrobotics203/" target="_blank" rel="noopener"><b>Instagram</b><span>@piperrobotics203</span></a><a href="https://www.facebook.com/people/Piper-203-Robotics/100089584456960/" target="_blank" rel="noopener"><b>Facebook</b><span>Piper 203 Robotics</span></a><a href="https://www.youtube.com/@piperrobotics" target="_blank" rel="noopener"><b>YouTube</b><span>@piperrobotics</span></a><h3>Results &amp; stats</h3><a href="https://frc-events.firstinspires.org/team/1802" target="_blank" rel="noopener"><b>FIRST team page</b><span>FRC 1802 events &amp; results</span></a><a href="https://www.thebluealliance.com/team/1802" target="_blank" rel="noopener"><b>The Blue Alliance</b><span>frc1802</span></a></div>
+    </div>
+  </section>
+
+  <section id="history">
+    <div class="wrap">
+      <h2>Season by season</h2>
+      <blockquote class="mission"><p>“To encourage students and mentors alike to integrate science and technology into everyday situations, while challenging themselves in an innovative and safe environment. To push team members out of their comfort zones and to experience previously unattainable levels of success. To provide a working atmosphere that incorporates fun, education, gracious professionalism, and team-building opportunities.”</p><div class="src">Team Stealth mission statement. Core values: Teamwork · Student Driven · Innovative Engineering · Community Outreach · Oomph! By 2025 the team summed up its values as family, quality and innovation.</div></blockquote>
+      <p class="small">The same season history shown on the <a href="history.html#frc1802">Piper Robotics History page</a>. Bracketed numbers and letters link to its Notes &amp; Sources.</p>
+      <div class="seasons">
+      <article class="season" id="frc1802-2006">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2006: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2006-aim-high-robot.jpg" alt="FRC 1802 2006 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2006-aim-high-team.jpg" alt="FRC 1802 2006 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2006</span><span class="game">Aim High</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-website">[3]</a><a class="ref" href="history.html#src-alumlist">[4]</a><a class="ref note" href="history.html#note-n2006rec">[a]</a><a class="ref note" href="history.html#note-n2006found">[b]</a></span></div>
+          <dl><div><dt>Event</dt><dd>Colorado Regional, Denver</dd></div><div><dt>Qualification</dt><dd>3rd seed, 8-1-0</dd></div><div><dt>Playoffs</dt><dd>Quarterfinalist</dd></div><div><dt>Robot</dt><dd>Knight Hawk</dd></div><div><dt>Sponsors</dt><dd>Ewing Marion Kauffman Foundation; Piper High School Physics Club</dd></div></dl><ul class="awards"><li>Highest Rookie Seed</li></ul><p>It started in August 2005, when senior Evan Johnson wanted to take AP Physics and Piper didn&#x27;t offer it. Physics and anatomy teacher Dr. Becky Knetter (&quot;Dr. K&quot;) went looking for other ways to challenge students and found <em>FIRST</em>. That September she registered Team 1802 with 12 students, 6 mentors and a one-year $18,000 Kauffman Foundation grant, and FRC 1108 Panther Robotics from Paola High School mentored the rookies. In October the students chose the name Stealth, the motto <em>Tempus Fugit</em>, and orange and black as team colors instead of the school&#x27;s purple, black and white. They named the rookie robot Knight Hawk. At kickoff in January 2006, four mentors traveled to New Hampshire while students watched the reveal on the NASA website. The team built a defensive robot that picked up balls and scored in the low goals, then road-tripped to Denver because Kansas City had no regional yet. Along the way, team member Mo pulled out his prayer mat at every stop and prayed for the team.</p><details><summary>Events</summary><ul><li>Colorado Regional, Denver (Mar 30–Apr 1): 3rd in qualifications, 8-1-0; lost quarterfinals 0-2; Highest Rookie Seed</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Founding coach</dt><dd>Dr. Rebecca &quot;Becky&quot; Knetter</dd></div><div><dt>Team</dt><dd>12 students and 6 mentors</dd></div><div><dt>Class of 2006</dt><dd>Evan Johnson, Aaron Dickson, Steven Dickson, Hannah Nusz, Paul Payton, Bryan Mesmier, William Verbanic</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2007">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2007: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2007-rack-n-roll-robot.jpg" alt="FRC 1802 2007 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2007-rack-n-roll-team.jpg" alt="FRC 1802 2007 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2007</span><span class="game">Rack &#x27;N&#x27; Roll</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-website">[3]</a><a class="ref" href="history.html#src-alumlist">[4]</a><a class="ref note" href="history.html#note-n2007rank">[c]</a></span></div>
+          <dl><div><dt>Event</dt><dd>Greater Kansas City Regional (first ever)</dd></div><div><dt>Qualification</dt><dd>18th of 44, 5-4-1</dd></div><div><dt>Playoffs</dt><dd>Semifinalist</dd></div><div><dt>Season</dt><dd>7-6-1</dd></div></dl><p>In August 2006, membership opened to the whole school: 17 students, only 4 of them returning after most of the first team graduated. The team worked to find new funding before build. The robot placed tubes on the bottom and middle rows of the rack and could lift two alliance partners for bonus points. For Dean Kamen&#x27;s &quot;homework&quot; to spread the word about <em>FIRST</em>, students wrote to senators, congressmen and businesses, and several local and state officials came to watch. The team launched its first website, built on WordPress with a news blog, in February. In March it competed at the very first Greater Kansas City Regional, at Hale Arena with 50 teams, and was picked for an alliance that lost in the semifinals to the eventual champions. That July, at the week-long Wyandotte County Fair demo, the mayor and a city commissioner each took the controls and raced to score a tube. In August 2007 the team spent the new school year recruiting and doing outreach demos.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional, Hale Arena (Mar 15–17): 18th of 44, 5-4-1; semifinals, 2-2</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Coach</dt><dd>Dr. Becky Knetter</dd></div><div><dt>Team</dt><dd>17 students</dd></div><div><dt>Class of 2007</dt><dd>Ryan Dowell, Daniel Klapper, James Farmer</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2008">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2008: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2008-first-overdrive-robot.jpg" alt="FRC 1802 2008 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2008-first-overdrive-team.jpg" alt="FRC 1802 2008 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2008</span><span class="game">FIRST Overdrive</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-website">[3]</a><a class="ref" href="history.html#src-alumlist">[4]</a><a class="ref note" href="history.html#note-n2008pc">[d]</a></span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · FIRST Championship, Atlanta (Curie) · Cowtown ThrowDown</dd></div><div><dt>Qualification</dt><dd>10th of 55 at GKC; 39th of 84 on Curie</dd></div><div><dt>Playoffs</dt><dd>Won GKC with Alliance 8 (1806, 1802, 476)</dd></div><div><dt>Season</dt><dd>14-6-2</dd></div><div><dt>Sponsors</dt><dd>Ewing Marion Kauffman Foundation; Piper HS Physics Club; Black &amp; Veatch</dd></div></dl><ul class="awards"><li>Regional Winner</li><li>Safety Captain of the Day (GKC)</li></ul><p>The team&#x27;s best build season yet: most of the robot, which raced the track, knocked balls off the overpass and launched them back over it, was done in the first three weeks, leaving three weeks to tune it while the team kept finding sponsors and doing demos. At the regional the team practiced and taught safety, and its safety captain was named Safety Captain of the Day. The 10th-ranked Team Stealth was picked by the 8th alliance and became the Cinderella alliance that won the Regional Championship, sending Piper to its first <em>FIRST</em> Championship in Atlanta. In May, founding coach Dr. Knetter retired; she had built the team and inspired every student who came through her classroom. With no school coach, students still ran summer demos at the WYCO Fair. In September, history teacher Ron Brown stepped up to coach. In November the team made the semifinals at the first-ever Cowtown ThrowDown, an off-season event hosted by Team Driven 1730 and Cerner.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Mar 6–8): 10th of 55, 4-1-2; won the event with Alliance 8 (1806, 1802, 476), playoffs 6-2; Regional Winner</li><li>FIRST Championship, Curie Division, Atlanta (Apr 17–19): 39th of 84, 4-3-0</li><li>Cowtown ThrowDown, inaugural (Nov): semifinals</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Coach</dt><dd>Dr. Becky Knetter (retired May 2008); Ron Brown (from Sept 2008)</dd></div><div><dt>Class of 2008</dt><dd>Chris Teters, Andrew Herndon, Amber Young, Brandon Lewis, Tony Denson, Alina Cawthon, Kerrie Ingram, Megan Bauswell, Bridget Harmon, Sarah Dowell</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2009">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2009: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2009-lunacy-robot.jpg" alt="FRC 1802 2009 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2009-lunacy-team.jpg" alt="FRC 1802 2009 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2009</span><span class="game">LUNACY</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-website">[3]</a><a class="ref" href="history.html#src-alumlist">[4]</a><a class="ref note" href="history.html#note-n2009web">[e]</a><a class="ref note" href="history.html#note-n2009rec">[f]</a></span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cowtown ThrowDown</dd></div><div><dt>Qualification</dt><dd>40th of 61, 3-4-0</dd></div><div><dt>Playoffs</dt><dd>Cowtown semifinalist</dd></div></dl><ul class="awards"><li>Website Excellence Award</li><li>Best Dressed (Cowtown ThrowDown)</li></ul><p>LUNACY celebrated the moon landing with a low-traction floor that made robots slide like they were on ice. The team built at the Treff family&#x27;s home, and the robot collected Moon Rocks and shot them into the trailers on opponents&#x27; robots. The regional didn&#x27;t go as well as hoped, but the team won the Website Excellence Award for its website. Coach Ron Brown left Piper in May after one season, but students kept meeting and ran the annual garage sale and WYCO Fair demo on their own. Chemistry teacher Eric Mabie became coach in September. At Cowtown in November, the team ran a redesigned robot to the semifinals and won Best Dressed for its pit shirts.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Feb 26–28): 40th of 61, 3-4-0</li><li>Cowtown ThrowDown (Nov): semifinals with a redesigned robot; Best Dressed</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Coach</dt><dd>Ron Brown (to May 2009); Eric Mabie (from Sept 2009)</dd></div><div><dt>Class of 2009</dt><dd>Kelli Treff, Jonathan Matson, Kevin Schnirch, Kevin Greenwald, Sheldon Green, Joey Pine, Isaac Jordan, Mike Smith</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2010">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2010: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2010-breakaway-robot.jpg" alt="FRC 1802 2010 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2010-breakaway-team.jpg" alt="FRC 1802 2010 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2010</span><span class="game">BREAKAWAY</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-website">[3]</a><a class="ref" href="history.html#src-alumlist">[4]</a></span></div>
+          <dl><div><dt>Event</dt><dd>Greater Kansas City Regional</dd></div><div><dt>Qualification</dt><dd>40th of 59, 3-4-3</dd></div><div><dt>Sponsors</dt><dd>Kauffman Foundation (founding sponsor); Black &amp; Veatch; JCPenney; Northrop Grumman; Piper HS</dd></div></dl><ul class="awards"><li>Gracious Professionalism Award</li></ul><p>BREAKAWAY was robot soccer on a field split by two big bumps, so the team built a suspension to drive over them and a pneumatic kicker. In February, just before his first regional as coach, Eric Mabie, an officer in the Missouri National Guard, was deployed overseas for the second time since he started teaching at Piper. Dr. Knetter came back to lead the team at the regional. The robot wasn&#x27;t picked for the playoffs, but the team lent its driver station laptop and helped other teams finish their robots, which earned the Gracious Professionalism Award. That summer the team kept up its usual fundraisers and demos.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Mar 4–6): 40th of 59, 3-4-3; Gracious Professionalism Award</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Coach</dt><dd>Eric Mabie (deployed); Dr. Becky Knetter led the team at the regional</dd></div><div><dt>Class of 2010</dt><dd>Peter Yadrich, Emily Cavlovic, Cody Lindberg, Emily Mosier, Jenna Frick, Caitlin Teters, Robert Gord, Kevin Palmer</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2011">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2011: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2011-logo-motion-robot.jpg" alt="FRC 1802 2011 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2011-logo-motion-team.jpg" alt="FRC 1802 2011 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2011</span><span class="game">LOGO MOTION</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-website">[3]</a><a class="ref" href="history.html#src-alumlist">[4]</a><a class="ref note" href="history.html#note-n2011web">[g]</a></span></div>
+          <dl><div><dt>Event</dt><dd>Greater Kansas City Regional</dd></div><div><dt>Qualification</dt><dd>25th of 56, 5-5-0</dd></div><div><dt>Sponsors</dt><dd>Kauffman Foundation; Black &amp; Veatch; JCPenney; Northrop Grumman; Piper HS</dd></div></dl><ul class="awards"><li>Website Award (Best Website, GKC)</li><li>Website Excellence Award</li></ul><p>For <em>FIRST</em>&#x27;s 20th anniversary, robots hung inner tubes shaped like the <em>FIRST</em> logo. Team Stealth&#x27;s robot could score on any level, and its minibot climbed a pole for bonus points. In January, Piper hosted its first FLL Rumble, with 70 FIRST LEGO League teams from around Kansas City. The robot played well at the regional but wasn&#x27;t picked for the playoffs, and the team brought home the Best Website Award. When the <em>FIRST</em> Championship moved from Atlanta to St. Louis, students and mentors went to volunteer.</p><details><summary>Events</summary><ul><li>FLL Rumble at Piper High School (Jan): about 70 FLL teams</li><li>Greater Kansas City Regional (Mar 10–12): 25th of 56, 5-5-0; Website Award</li><li>FIRST Championship, St. Louis (Apr): volunteered and observed</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Coach</dt><dd>Eric Mabie</dd></div><div><dt>Class of 2011</dt><dd>Curtis Whitworth, Casey Falk, Thomas Ortiz, Miles Kitchen, Shane Miller</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2012">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2012: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2012-rebound-rumble-robot.jpg" alt="FRC 1802 2012 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2012-rebound-rumble-team.jpg" alt="FRC 1802 2012 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2012</span><span class="game">Rebound Rumble</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-website">[3]</a><a class="ref" href="history.html#src-alumlist">[4]</a><a class="ref note" href="history.html#note-n2012yr">[h]</a></span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>46th of 64, 5-4-0</dd></div><div><dt>Playoffs</dt><dd>GKC playoffs 2-2; Cow Town playoffs 1-2</dd></div><div><dt>Season</dt><dd>13-12-0</dd></div><div><dt>Sponsors</dt><dd>Kauffman Foundation; Black &amp; Veatch; JCPenney; KC STEM Alliance; Piper HS</dd></div></dl><ul class="awards"><li>Imagery Award in honor of Jack Kamen</li></ul><p>Rebound Rumble was robot basketball: alliances shot foam balls at hoops and tried to balance on tipping bridges at the end of each match. At the Greater Kansas City Regional the team went 5-4 in qualifying, earned a spot in the playoffs, and was honored with the Imagery Award in honor of Jack Kamen for the look of its team and robot. In November the robot came back out for the Cow Town ThrowDown, where it went 5-4 again and played in the playoffs.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Mar 1–3): 46th of 64, 5-4-0; playoffs 2-2; Imagery Award</li><li>Cow Town ThrowDown (Nov 2–3): 5-4-0; playoffs 1-2</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Coach</dt><dd>Eric Mabie</dd></div><div><dt>Class of 2012</dt><dd>Matt Strub, Lorenzo Freddi</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2013">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2013: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2013-ultimate-ascent-robot.jpg" alt="FRC 1802 2013 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2013-ultimate-ascent-team.jpg" alt="FRC 1802 2013 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2013</span><span class="game">ULTIMATE ASCENT</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-website">[3]</a><a class="ref" href="history.html#src-alumlist">[4]</a></span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>55th of 55, 1-9-0</dd></div></dl><p>ULTIMATE ASCENT had robots firing flying discs at goals and climbing a metal pyramid. On the field it was a tough year, and the team finished 55th of 55 at the regional. Behind the scenes, keeping the program going took real work: competing cost more than $12,000 this season, $5,000 of it just to register and get the kit of parts. The team paid for most of it with three Piper Craft Shows a year (the 2013 Winter show set a record with more than 90 vendors) and an annual garage sale that raised over $3,000.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Mar 14–16): 55th of 55, 1-9-0</li><li>Cow Town ThrowDown (Nov 1)</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Coach</dt><dd>Eric Mabie</dd></div><div><dt>Class of 2013</dt><dd>Aiden Webb, Katie Glenn, Claire Bender, Jandro Winkle, Jordan Hall, Corbin Anderson, Ethan Bach</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2014">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2014: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2014-aerial-assist-robot.jpg" alt="FRC 1802 2014 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2014-aerial-assist-team.jpg" alt="FRC 1802 2014 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2014</span><span class="game">AERIAL ASSIST</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-website">[3]</a><a class="ref" href="history.html#src-alumlist">[4]</a><a class="ref note" href="history.html#note-n2014roster">[i]</a></span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>22nd of 58, 6-5-0</dd></div><div><dt>Playoffs</dt><dd>GKC playoffs 0-2; Cow Town playoffs 0-2</dd></div><div><dt>Season</dt><dd>6-9-0</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance / Black &amp; Veatch &amp; Piper High School</dd></div></dl><ul class="awards"><li>Quality Award sponsored by Motorola</li></ul><p>AERIAL ASSIST was all about teamwork, with alliances passing giant balls between robots to earn bonus points. Team Stealth ranked 22nd of 58 at the Greater Kansas City Regional, made the playoffs, and took home the Quality Award sponsored by Motorola for how well its robot was built. By now the team was student-run, with an executive board of co-CEOs and build, finance, public relations and safety leads, and the students had persuaded the principal to add a robotics class at Piper High.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Mar 13–15): 22nd of 58, 6-5-0; playoffs 0-2; Quality Award</li><li>Cow Town ThrowDown (Oct 31–Nov 1): playoffs 0-2</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Coach</dt><dd>Eric Mabie</dd></div><div><dt>Assistant coach</dt><dd>Karen Treff</dd></div><div><dt>Mentors</dt><dd>Stephan Brumbaugh, Jeff Cawthon, Kelli Treff, James Weatherby, Aiden Webb</dd></div><div><dt>Co-CEOs</dt><dd>Taylor Beashore, Brady Gooch</dd></div><div><dt>Build director</dt><dd>Herbie Treff</dd></div><div><dt>Financial directors</dt><dd>Alicia Lopez, Jared Winzer</dd></div><div><dt>Public relations director</dt><dd>Katie Comer</dd></div><div><dt>Safety captains</dt><dd>Raven Fletcher, William Trowbridge</dd></div><div><dt>Safety cadet</dt><dd>Lorenzo Granados</dd></div><div><dt>Students</dt><dd>Adam Bender, Raul Carrera, Lucas Dehner, Britta Deihl, Jacob Dougherty, Teresa Douglas, Dometric Garcia, Jesse Gordon, Olivia Hunt, Matt Johnson, Stephen Michael, Tyler Nguyen, Rachel Saunders, Jacob Sharp, Kelsie Tanner, Trey Young</dd></div><div><dt>Class of 2014</dt><dd>Alicia Lopez, Stephen Michael, Rachel Saunders, Brady Gooch, Jared Winzer, JD Dodd, Hannah Sharp, Olivia Hunt, Lexi Pate, Jacob Dougherty</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2015">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2015: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2015-recycle-rush-robot.jpg" alt="FRC 1802 2015 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2015-recycle-rush-team.jpg" alt="FRC 1802 2015 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2015</span><span class="game">RECYCLE RUSH</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-website">[3]</a><a class="ref" href="history.html#src-alumlist">[4]</a><a class="ref" href="history.html#src-timeclock">[5]</a></span></div>
+          <dl><div><dt>Event</dt><dd>Greater Kansas City Regional</dd></div><div><dt>Qualification</dt><dd>31st of 54, 3-7-0 (ranked by average score, 43.90)</dd></div><div><dt>Robot</dt><dd>Scorpion</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance / Black &amp; Veatch / Honeywell &amp; Piper High; Goodcents Deli Fresh Subs</dd></div></dl><p>Kickoff was January 3, 2015, and RECYCLE RUSH asked robots to stack totes and recycling containers. The team&#x27;s first weekly blurb to parents reported that students had brainstormed several designs and were close to driving their &quot;Frankenbot&quot; prototype. During build season the team worked two shifts a day: 3–6 PM and 6–9 PM on weekdays, and 9 AM–12 PM and 12–3 PM on Saturdays. The finished robot, Scorpion, ranked 31st of 54 at the Greater Kansas City Regional.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Mar 11–14): 31st of 54, 3-7-0</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Head coach</dt><dd>Eric Mabie</dd></div><div><dt>Public relations and marketing director</dt><dd>Katie Comer</dd></div><div><dt>Class of 2015</dt><dd>Adam Bender, Taylor Beashore, Katie Comer</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2016">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2016: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2016-first-stronghold-robot.jpg" alt="FRC 1802 2016 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2016-first-stronghold-team.jpg" alt="FRC 1802 2016 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2016</span><span class="game">FIRST STRONGHOLD</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-alumlist">[4]</a></span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · CowTown ThrowDown</dd></div><div><dt>Qualification</dt><dd>54th of 59 at GKC; 38th of 50 at CowTown</dd></div><div><dt>Season</dt><dd>6-13-0</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance / Black &amp; Veatch / Honeywell &amp; Piper High</dd></div></dl><p>FIRST STRONGHOLD was a castle siege, with robots crossing defenses and firing boulders at a tower. The team had a rough regional, going 2-8, but came back stronger in the fall and went 4-5 at the CowTown ThrowDown in October.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Mar 9–12): 54th of 59, 2-8-0</li><li>CowTown ThrowDown (Oct 28–29): 38th of 50, 4-5-0</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Class of 2016</dt><dd>Lena Hartmayer</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2017">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2017: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2017-first-steamworks-robot.jpg" alt="FRC 1802 2017 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2017-first-steamworks-team.jpg" alt="FRC 1802 2017 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2017</span><span class="game">FIRST STEAMWORKS</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-alumlist">[4]</a></span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>54th of 60 at GKC; 47th of 50 at Cow Town</dd></div><div><dt>Season</dt><dd>4-13-0</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance / Black &amp; Veatch / Honeywell &amp; Piper High</dd></div></dl><p>FIRST STEAMWORKS had a steampunk theme: robots delivered gears to airships and climbed ropes at the end of each match. It was a hard season, with the team finishing 54th of 60 at the regional and 47th of 50 at Cow Town in October.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Mar 15–18): 54th of 60, 2-7-0</li><li>Cow Town ThrowDown (Oct 27–28): 47th of 50, 2-6-0</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Class of 2017</dt><dd>Callin Harris, Dallas Harris, Jesse Gordon, Kristen Warner</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2018">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2018: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2018-first-power-up-robot.jpg" alt="FRC 1802 2018 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2018-first-power-up-team.jpg" alt="FRC 1802 2018 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2018</span><span class="game">FIRST POWER UP</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-chairman17">[6]</a><a class="ref" href="history.html#src-caw">[7]</a><a class="ref" href="history.html#src-alumlist">[4]</a></span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>36th of 43 at GKC; 28th of 49 at Cow Town</dd></div><div><dt>Season</dt><dd>8-12-0</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance / Black &amp; Veatch / Honeywell &amp; Piper High; Piper Booster Club; Piper Optimist Club; Home Depot; Rend Construction; Simple Simon&#x27;s; individual donors</dd></div></dl><p>This was a rebuilding year. The team&#x27;s November 2017 Chairman&#x27;s draft reports that it grew from 5 to 23 members in a single year, started mentoring a Piper Middle School FLL team, began exploring an FTC team as a bridge between programs, and was developing an Android scouting app. Three seasonal craft shows and Culver&#x27;s fundraisers kept it going. In FIRST POWER UP the purple robot rolled on an 8-inch mecanum drive and handled power cubes with a pneumatic arm, finishing 36th of 43 at the regional and 28th of 49 at Cow Town.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Mar 14–17): 36th of 43, 4-8-0</li><li>Cow Town ThrowDown (Oct 26–27): 28th of 49, 4-4-0</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Class of 2018</dt><dd>Emma Morgan</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2019">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2019: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2019-destination-deep-space-robot.jpg" alt="FRC 1802 2019 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2019-destination-deep-space-team.jpg" alt="FRC 1802 2019 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2019</span><span class="game">DESTINATION: DEEP SPACE</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-caw">[7]</a><a class="ref" href="history.html#src-list1819">[8]</a><a class="ref" href="history.html#src-timeclock">[5]</a></span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>10th of 36 at GKC, 8-4-0</dd></div><div><dt>Playoffs</dt><dd>GKC: Alliance 6 first pick; won Cow Town with Alliance 1 (3928, 323, 1802)</dd></div><div><dt>Season</dt><dd>17-11-0</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance / Black &amp; Veatch / Honeywell &amp; Piper High; Piper Booster Club; Piper Optimist Club; Home Depot; Rend Construction; Simple Simon&#x27;s; individual donors</dd></div></dl><ul class="awards"><li>Judges&#x27; Award</li><li>Cow Town ThrowDown Winner</li></ul><p>One of the team&#x27;s best seasons in years. The robot sat on a 4-inch mecanum drive with a pneumatic climber, built on a frame of PVC and 80/20 aluminum. At the Greater Kansas City Regional it went 8-4 and ranked 10th, was the first pick of Alliance 6 before falling in the quarterfinals, and the judges gave the team the Judges&#x27; Award. That November, as the second pick of Alliance 1 with teams 3928 and 323, Team Stealth won the Cow Town ThrowDown, taking the finals two matches to one.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Mar 20–23): 10th of 36, 8-4-0; Alliance 6 first pick (captain 6805); lost quarterfinals 33-67, 39-52; Judges&#x27; Award</li><li>Cow Town ThrowDown (Nov 1–2): 27th of 50, 3-4-0; Alliance 1 second pick (captain 3928, with 323); won the event 6-1 (QF 83-73, 90-75; SF 63-45, 93-59; F 90-40, 59-66, 72-61)</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Coaches in team records from this era</dt><dd>Eric Mabie, Brady Gooch, Shawna Hart</dd></div><div><dt>Mentors in team records from this era</dt><dd>Dan Comer, Susan Comer, Karen Treff, Jesse Gordon</dd></div><div><dt>2018–19 team</dt><dd>John Brungardt, Tommy Comer, Thomas Douglas, Timothy Douglas, Brittany Foster, Aurora Gray, Andrew Hart, Jackson Kempf, Dacey Madl-Hayselden, Fiona Maxville, Reagan Montgomery, Alex Nold, David Pena, Roberto Ramirez III, Brooke Robertson, Hudson Schack, Eli Simpson, Anni Smith, Kyle Vicker, McClane Young</dd></div><div><dt>Class of 2019</dt><dd>Tommy Comer</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2020">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2020: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2020-infinite-recharge-robot.jpg" alt="FRC 1802 2020 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2020-infinite-recharge-team.jpg" alt="FRC 1802 2020 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2020</span><span class="game">INFINITE RECHARGE</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a></span></div>
+          <dl><div><dt>Event</dt><dd>Central Missouri Regional (cancelled)</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance / Black &amp; Veatch / Honeywell &amp; Piper High School</dd></div></dl><p>The team was headed to the Central Missouri Regional in Sedalia in April when COVID-19 shut down the season.</p><details><summary>Events</summary><ul><li>Central Missouri Regional, Sedalia (Apr 2–5): cancelled</li></ul></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2021">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2021: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2021-infinite-recharge-at-home-robot.jpg" alt="FRC 1802 2021 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2021-infinite-recharge-at-home-team.jpg" alt="FRC 1802 2021 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2021</span><span class="game">INFINITE RECHARGE at Home</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-timeclock">[5]</a></span></div>
+          <dl><div><dt>Events</dt><dd>At Home Challenge · Game Design Challenge · Cow Town ThrowDown</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance / Black &amp; Veatch / Honeywell &amp; Piper High School</dd></div></dl><p>With no in-person events, the team competed from home in the INFINITE RECHARGE At Home Challenge, finishing 17th of 22 in its group, and in the Game Design Challenge. In November it was finally back on a real field at the Cow Town ThrowDown.</p><details><summary>Events</summary><ul><li>INFINITE RECHARGE At Home Challenge, Cobalt Group (Apr 19–23): 17th of 22</li><li>Game Design Challenge, Silicon Group (Apr 26–30)</li><li>Cow Town ThrowDown (Nov 5): 2-3-0</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Class of 2021</dt><dd>Hudson Schack (on the team 2018–2021)</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2022">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2022: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2022-rapid-react-robot.jpg" alt="FRC 1802 2022 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2022-rapid-react-team.jpg" alt="FRC 1802 2022 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2022</span><span class="game">RAPID REACT</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-roboinfo">[9]</a></span></div>
+          <dl><div><dt>Event</dt><dd>Greater Kansas City Regional</dd></div><div><dt>Qualification</dt><dd>15th of 30, 5-7-0</dd></div><div><dt>Playoffs</dt><dd>Alliance 8 captain</dd></div><div><dt>Robot</dt><dd>Domo</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance / Black &amp; Veatch / Honeywell / Kastle Grinding &amp; Piper High School</dd></div></dl><p>RAPID REACT brought back a full in-person season. The team&#x27;s robot, Domo, ranked 15th of 30 at the Greater Kansas City Regional, and Team Stealth captained Alliance 8, picking team 1723 The FBI, before falling in the quarterfinals.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Mar 23–26): 15th of 30, 5-7-0; Alliance 8 captain (picked 1723); lost quarterfinals 38-67, 16-75</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>2021–22 team</dt><dd>Akiume (Aki) Butner, Emily Brown, Elise Collins, Jasmine Leonard, Mason Lofton, Ella Nolan</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2023">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2023: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2023-charged-up-robot.jpg" alt="FRC 1802 2023 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2023-charged-up-team.jpg" alt="FRC 1802 2023 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2023</span><span class="game">CHARGED UP</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-pastmembers">[10]</a><a class="ref" href="history.html#src-roboinfo">[9]</a><a class="ref" href="history.html#src-timeclock">[5]</a><a class="ref note" href="history.html#note-n2023ct">[j]</a></span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · FIRST Championship, Houston (Johnson) · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>13th of 36 at GKC; 19th of 78 on Johnson</dd></div><div><dt>Playoffs</dt><dd>GKC finalist as Alliance 5 first pick</dd></div><div><dt>Robot</dt><dd>Raptor</dd></div><div><dt>Season</dt><dd>21-17-0</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance &amp; Piper High School; Bates Tax Service; Block Real Estate Services; NPB Companies; Seek Real Estate; Twisters</dd></div></dl><ul class="awards"><li>Regional Finalist</li><li>Wildcard: FIRST Championship qualifier</li></ul><p>Raptor carried the team to its best season in fifteen years. Programmed in Java by Denise Braithwaite and driven by Mason Lofton with Aki Butner as operator, it was the first pick of Alliance 5 at the Greater Kansas City Regional, and that alliance fought all the way to the finals. The finalist finish and a Wildcard sent Team Stealth to the FIRST Championship in Houston for the first time since 2008, where it ranked 19th of 78 in the Johnson Division. Isabelle Thebeau ran the team&#x27;s Facebook pages and took photos at Worlds.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Mar 29–Apr 1): 13th of 36, 6-6-0; Alliance 5 first pick (captain 5801 CTC Inspire, with 2457 The Law); playoffs 4-3; lost finals 134-149, 125-154; Regional Finalist and Wildcard</li><li>FIRST Championship, Johnson Division, Houston (Apr 19–22): 19th of 78, 6-4-0</li><li>Cow Town ThrowDown (Oct 27–28): 14th of 40, 4-3-0; Alliance 5 second pick (captain 1987 Broncobots, with 5013 Trobots and 5126 Electromagnetic Panthers); beat Alliance 4 136-80</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Program coach</dt><dd>Stephan Brumbaugh</dd></div><div><dt>Stealth coach</dt><dd>Adam Schack</dd></div><div><dt>Mentors</dt><dd>Katie Comer, Tommy Comer, Hudson Schack, Jason Wendel</dd></div><div><dt>CEOs</dt><dd>Mason Lofton, Elise Collins</dd></div><div><dt>Co-CEO</dt><dd>Aki Butner</dd></div><div><dt>Programmer</dt><dd>Denise Braithwaite</dd></div><div><dt>Safety captain</dt><dd>Adrienne McCoy</dd></div><div><dt>Public relations</dt><dd>Emily Brown, Ella Nolan</dd></div><div><dt>Team</dt><dd>Gherrit Peterson, Isabelle Thebeau, Brady Livengood, Jordan Joyce, Dillon Kavanaugh, Jayden Holroyd, Roman Mingorance, Frances-Faith Obiesie, Liam Sullivan, Benjamin Kempker, Cooper Crone, Ryleigh Hanschu, Christopher Nguyen, Sawyer Vas, Braxton Walker, Gabriel Yang</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2024">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2024: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2024-crescendo-robot.jpg" alt="FRC 1802 2024 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2024-crescendo-team.jpg" alt="FRC 1802 2024 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2024</span><span class="game">CRESCENDO</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-foundation">[11]</a><a class="ref" href="history.html#src-pastmembers">[10]</a><a class="ref" href="history.html#src-roboinfo">[9]</a></span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · MO-KAN State Championship · Cow Town Throwdown</dd></div><div><dt>Qualification</dt><dd>41st of 42 at GKC; 26th of 34 at MO-KAN; 18th of 42 at Cow Town</dd></div><div><dt>Robot</dt><dd>Overture</dd></div><div><dt>Season</dt><dd>12-19-0</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance &amp; Piper High School; Piper Robotics Alumni Foundation</dd></div></dl><p>CRESCENDO&#x27;s robot was named Overture, with Brady Livengood driving and CEO Aki Butner as drive captain. The regional was a struggle, but the team qualified for the MO-KAN State Championship in June. Off the field, PR and media lead Isabelle Thebeau spoke to the school board to help save the team&#x27;s shop, and members began mentoring Piper&#x27;s FLL teams.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Apr 3–6): 41st of 42, 4-8-0</li><li>MO-KAN State Championship (May 31–Jun 1): 26th of 34, 4-6-0</li><li>Cow Town Throwdown (Oct 18–19): 18th of 42, 4-4-0; Alliance 3 second pick (captain 5126, with 1987); playoffs 0-1</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Coaches</dt><dd>Stephan Brumbaugh, Adam Schack</dd></div><div><dt>Mentors</dt><dd>Katie Comer, Tommy Comer, Hudson Schack, Jason Wendel</dd></div><div><dt>CEO</dt><dd>Aki Butner</dd></div><div><dt>Build director</dt><dd>Brady Livengood</dd></div><div><dt>Lead programmer</dt><dd>Denise Braithwaite</dd></div><div><dt>Safety captain</dt><dd>Adrienne McCoy</dd></div><div><dt>PR and media</dt><dd>Isabelle Thebeau</dd></div><div><dt>Team</dt><dd>Stephen Lowe, Jordan Joyce, Gherrit Peterson, Ccing Tha, Jett Shauers, Maximus Gonzales, Liam Sullivan, Nikolai Lewis</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2025">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2025: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2025-reefscape-robot.jpg" alt="FRC 1802 2025 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2025-reefscape-team.jpg" alt="FRC 1802 2025 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2025</span><span class="game">REEFSCAPE</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-pnn">[12]</a><a class="ref" href="history.html#src-impact25">[13]</a><a class="ref" href="history.html#src-pastmembers">[10]</a><a class="ref" href="history.html#src-roboinfo">[9]</a><a class="ref note" href="history.html#note-n2025mokan">[k]</a></span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · MO-KAN State Championship · Cow Town Throwdown</dd></div><div><dt>Qualification</dt><dd>15th of 27 at MO-KAN, 6-5-0</dd></div><div><dt>Playoffs</dt><dd>MO-KAN: Alliance 7 first pick</dd></div><div><dt>Season</dt><dd>15-19-0</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance &amp; Piper High School; Piper Robotics Alumni Foundation</dd></div></dl><ul class="awards"><li>FIRST Dean&#x27;s List Finalist: Brady Livengood</li></ul><p>A small team that took on a lot. Twelve members, with a five-person executive board, 2 coaches and 4 mentors, met Monday through Saturday during build season. That year the team moved from an 820 sq ft shop into a new 3,445 sq ft shop and helped launch Piper&#x27;s high school robotics lab. Its demos at Science City reached more than 10,000 people over three years. It hosted Girl Scout Days for troops from Fort Leavenworth, helped Teams 1710 and 5268 donate more than 200 LEGO sets to Children&#x27;s Mercy Hospital, and hosted the FTC KC West League Tournament for the second year in a row. When school rules ended sponsor runs, the Piper Robotics Alumni Foundation formed to help fund the program, and the team took on fundraising for every Piper Robotics team. It summed up its values as family, quality and innovation. On the field, the robot averaged about 103 points a match at the MO-KAN State Championship, where Team Stealth was the first pick of Alliance 7, and Brady Livengood was named a FIRST Dean&#x27;s List Finalist.</p><details><summary>Events</summary><ul><li>Greater Kansas City Regional (Mar 26–29): 26th of 36, 5-6-0; Brady Livengood named a FIRST Dean&#x27;s List Finalist</li><li>MO-KAN State Championship, North Kansas City HS (Jun 6–8): 15th of 27, 6-5-0; Alliance 7 first pick (captain 5098 STING, with 2457 RoboChargers); lost 69-182 to Alliance 2 (1986, 10453, 5801) and 99-153 to Alliance 12 (757, 1723, 1108)</li><li>Cow Town Throwdown (Oct 24–25): 25th of 42, 4-4-0; Alliance 8 second pick (captain 1997, with 1775); lost 61-186, 70-89</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Head coach</dt><dd>Stephan Brumbaugh</dd></div><div><dt>Assistant coach</dt><dd>Adam Schack</dd></div><div><dt>CEO</dt><dd>Isabelle Thebeau</dd></div><div><dt>Co-CEO / build director</dt><dd>Brady Livengood</dd></div><div><dt>Co-build</dt><dd>Stephen Lowe</dd></div><div><dt>Safety captain</dt><dd>Jordan Joyce</dd></div><div><dt>Team</dt><dd>Gherrit Peterson, Jedidiah Alexander, Miles Strohschein</dd></div></dl></details><p class="media"><a href="https://www.pipernationnews.com/23772/activities/piper-highs-team-stealth-1802-wraps-up-2025-first-robotics-season-at-missouri-kansas-state-championship/" target="_blank" rel="noopener">Piper Nation News: Team Stealth 1802 at MO-KAN</a></p>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2026">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2026: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2026-rebuilt-robot.jpg" alt="FRC 1802 2026 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2026-rebuilt-team.jpg" alt="FRC 1802 2026 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2026</span><span class="game">REBUILT</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-tba">[2]</a><a class="ref" href="history.html#src-foundation">[11]</a><a class="ref" href="history.html#src-timeclock">[5]</a><a class="ref" href="history.html#src-roboinfo">[9]</a><a class="ref note" href="history.html#note-nrank">[l]</a></span></div>
+          <dl><div><dt>Events</dt><dd>Heartland Regional · Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>11th of 41 at Heartland, 7-3-0; 14th of 41 at GKC</dd></div><div><dt>Playoffs</dt><dd>Heartland: Alliance 8 captain; GKC: Alliance 6 first pick</dd></div><div><dt>Season</dt><dd>18-17-0</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance &amp; Piper High School; The Boeing Company; Piper Robotics Alumni Foundation</dd></div></dl><ul class="awards"><li>Gracious Professionalism Award</li></ul><p>Team Stealth opened REBUILT at the Heartland Regional, where it went 7-3, ranked 11th of 41 and captained Alliance 8. Back home at the Greater Kansas City Regional it was the first pick of Alliance 6 and won the Gracious Professionalism Award. The Boeing Company joined the team&#x27;s sponsors this year.</p><details><summary>Events</summary><ul><li>Heartland Regional (Mar 18–21): 11th of 41, 7-3-0; Alliance 8 captain (picked 5013); playoffs 1-2</li><li>Greater Kansas City Regional (Apr 8–11): 14th of 41, 6-5-0; Alliance 6 first pick (captain 1723); lost 177-221, 153-210; Gracious Professionalism Award</li><li>Cow Town ThrowDown (Oct 23–24): 26th of 42, 3-5-0; Alliance 6 third pick (captain 1775, with 1108); playoffs 1-0</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Coaches</dt><dd>Stephan Brumbaugh, Adam Schack, Hudson Schack, Katie Comer, Tommy Comer, Jason Wendel</dd></div><div><dt>CEO / build director</dt><dd>Brady Livengood</dd></div><div><dt>Safety director</dt><dd>Jordan Joyce</dd></div><div><dt>Class of 2026</dt><dd>Brady Livengood, Jordan Joyce, Jedidiah Alexander, Dillon Kavanaugh, Roman Mingorance, Liam Sullivan, Cooper Crone, Ryleigh Hanschu, Christopher Nguyen, Nikolai Lewis</dd></div></dl></details>
+        </div>
+      </article>
+      <article class="season" id="frc1802-2027">
+        <div class="photos">
+          <!-- Photos for FRC 1802 2027: upload these files to assets/history/ -->
+          <img class="season-photo" src="assets/history/frc1802-2027-biocore-robot.jpg" alt="FRC 1802 2027 robot photo" width="400" height="300">
+          <img class="season-photo" src="assets/history/frc1802-2027-biocore-team.jpg" alt="FRC 1802 2027 team photo" width="400" height="300">
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2027</span><span class="game">BIOCORE</span><span class="refs"><a class="ref" href="history.html#src-frcev">[1]</a><a class="ref" href="history.html#src-info2627">[14]</a></span></div>
+          <dl><div><dt>Event</dt><dd>City of Fountains Regional (registered)</dd></div><div><dt>Sponsors</dt><dd>KC STEM Alliance &amp; Piper High School</dd></div></dl><p>The team is registered for the City of Fountains Regional, March 31–April 3, 2027.</p><details><summary>Events</summary><ul><li>City of Fountains Regional (Mar 31–Apr 3, 2027): registered</li></ul></details><details><summary>People</summary><dl class="ppl"><div><dt>Head coach / program admin</dt><dd>Stephan Brumbaugh</dd></div><div><dt>Assistant coach / co-admin</dt><dd>Adam Schack</dd></div><div><dt>Coach / co-admin</dt><dd>Katie Comer</dd></div><div><dt>Coaches</dt><dd>Patricia Schack, Hudson Schack, Jason Wendel</dd></div></dl></details>
+        </div>
+      </article>
+      </div>
+      <p class="back"><a href="#top">Back to top ↑</a></p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><h4>Piper Robotics</h4><p style="margin:0">A program of Piper Unified School District 203, Kansas City, Kansas.</p></div>
+      <div><h4>Our Teams</h4><a href="b2-spirit-fll-623.html">B2 Spirit · FLL 623</a><a href="nighthawks-ftc-14213.html">Nighthawks · FTC 14213</a><a href="team-stealth-ftc-21536.html">Team Stealth · FTC 21536</a><a href="team-stealth-frc-1802.html">Team Stealth · FRC 1802</a></div>
+      <div><h4>Robotics</h4><a href="index.html">Home</a><a href="history.html">Our History</a><a href="fundraising.html">Support Us</a><a href="https://scout.piperrobotics.net">Scout App</a><a href="https://parent.piperrobotics.net">Parent App</a><a href="https://www.piperschools.com" target="_blank" rel="noopener">Piper USD 203</a></div>
+    </div>
+    <div class="fine">© <span id="yr">2026</span> Piper Robotics · Piper USD 203 · Kansas City, Kansas</div>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button type="button" id="lightbox-close" aria-label="Close photo">&times;</button>
+  <figure><img id="lightbox-img" alt=""><figcaption id="lightbox-cap"></figcaption></figure>
+</div>
+<script>
+(function () {
+  var box = document.getElementById('lightbox'), big = document.getElementById('lightbox-img'),
+      cap = document.getElementById('lightbox-cap'), closeBtn = document.getElementById('lightbox-close'), last = null;
+  function open(img) {
+    if (!img.complete || !img.naturalWidth) return;   // photo not uploaded yet
+    last = img; big.src = img.currentSrc || img.src; big.alt = img.alt; cap.textContent = img.alt;
+    box.hidden = false; document.body.style.overflow = 'hidden'; closeBtn.focus();
+  }
+  function close() {
+    box.hidden = true; big.removeAttribute('src'); document.body.style.overflow = '';
+    if (last) last.focus();
+  }
+  document.querySelectorAll('.season-photo').forEach(function (img) {
+    img.tabIndex = 0;
+    function mark() { if (!img.naturalWidth) { img.classList.add('broken'); img.tabIndex = -1; } }
+    if (img.complete) mark(); else img.addEventListener('error', mark);
+    img.addEventListener('click', function () { open(img); });
+    img.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); } });
+  });
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function (e) { if (e.target === box || e.target.tagName === 'FIGURE') close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
+})();
+</script>
+</body>
+</html>
