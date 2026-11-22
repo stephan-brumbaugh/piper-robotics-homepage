@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piper Robotics History</title>
+<meta name="description" content="Two decades of Piper Robotics: season-by-season history of Team Stealth (FRC 1802 & FTC 21536), the Nighthawks (FTC 14213) and B2 Spirit (FLL 623).">
+<link rel="icon" href="assets/piper-robotics-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-900: #24103f; --purple-800: #331660; --purple-700: #4a2a85;
+    --purple-600: #5b33a3; --purple-500: #7444c9; --purple-100: #ece4f8; --purple-50: #f7f3fd;
+    --ink: #1d1530; --muted: #5c5470; --line: #e2d9f1; --white: #fff; --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 130px; }
+  body { margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--white); line-height: 1.6; }
+  a { color: var(--purple-600); }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  header.top { position: sticky; top: 0; z-index: 20; background: rgba(36,16,63,.97); backdrop-filter: blur(8px); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+  .brand { display: flex; align-items: center; background: var(--white); border-radius: 10px; padding: 5px 10px; }
+  .brand img { height: 40px; width: auto; }
+  nav.links { display: flex; gap: 22px; font-size: 15px; }
+  nav.links a { color: #e0d4f7; text-decoration: none; font-weight: 500; }
+  nav.links a:hover, nav.links a[aria-current] { color: var(--white); }
+  @media (max-width: 760px) { nav.links { display: none; } }
+
+  /* Team tabs (sticky under header) */
+  .tabs { position: sticky; top: 68px; z-index: 15; background: var(--white); border-bottom: 1px solid var(--line); }
+  .tabs .wrap { display: flex; gap: 8px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; scrollbar-width: none; }
+  .tabs a { flex: none; text-decoration: none; font-size: 14px; font-weight: 600; color: var(--purple-700); background: var(--purple-50); border: 1px solid var(--line); padding: 7px 14px; border-radius: 999px; white-space: nowrap; }
+  .tabs a:hover { background: var(--purple-100); }
+
+  .hero { background: radial-gradient(900px 400px at 85% -10%, rgba(116,68,201,.55), transparent 60%), var(--purple-900); color: var(--white); padding: 56px 0 64px; }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #cdb8f7; margin-bottom: 12px; }
+  .hero h1 { font-size: clamp(34px, 5.5vw, 54px); line-height: 1.07; margin: 0 0 16px; font-weight: 800; letter-spacing: -1px; }
+  .hero p { font-size: 18px; color: #e0d4f7; max-width: 720px; margin: 0; }
+
+  section { padding: 64px 0; }
+  h2 { font-size: clamp(28px, 4vw, 38px); margin: 0 0 6px; letter-spacing: -.5px; color: var(--purple-900); }
+
+  /* Program milestones */
+  .milestones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; }
+  .ms { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--white); }
+  .ms b { display: block; color: var(--purple-600); font-size: 22px; }
+  .ms span { font-size: 12px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; color: var(--purple-700); }
+  .ms p { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
+  @media (max-width: 960px) { .milestones { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .milestones { grid-template-columns: 1fr; } }
+
+  /* Team sections */
+  .team-sec:nth-of-type(even) { background: var(--purple-50); }
+  .team-head { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: center; }
+  .team-logo { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: grid; place-items: center; height: 180px; }
+  .team-logo img { max-height: 144px; width: auto; }
+  .badge { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--purple-700); background: var(--purple-100); padding: 4px 10px; border-radius: 999px; margin-bottom: 8px; }
+  .motto { margin: 0 0 10px; color: var(--purple-700); }
+  .motto em { font-weight: 700; }
+  .intro { margin: 0; font-size: 17px; }
+  @media (max-width: 760px) { .team-head { grid-template-columns: 1fr; gap: 20px; } .team-logo { height: 150px; } .team-logo img { max-height: 114px; } }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0 8px; }
+  .stat { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
+  .stat b { display: block; font-size: 26px; color: var(--purple-600); line-height: 1.15; }
+  .stat small { color: var(--muted); font-size: 14px; }
+  @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+  .seasons-title { font-size: 20px; color: var(--purple-900); margin: 36px 0 16px; }
+  .seasons { display: grid; gap: 16px; }
+  .season { display: grid; grid-template-columns: 300px 1fr; gap: 22px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+  @media (max-width: 760px) { .season { grid-template-columns: 1fr; } }
+  .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start; }
+  .ph { position: relative; margin: 0; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; background: repeating-linear-gradient(135deg, var(--purple-50), var(--purple-50) 10px, var(--purple-100) 10px, var(--purple-100) 20px); border: 1px dashed #c9b8e8; }
+  .ph::after { content: attr(data-label); position: absolute; inset: 0; display: grid; place-items: center; text-align: center; font-size: 12px; font-weight: 600; color: var(--purple-700); padding: 6px; }
+  .ph img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
+  .s-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 8px; }
+  .yr { font-size: 22px; font-weight: 800; color: var(--purple-600); }
+  .game { font-weight: 700; color: var(--purple-900); letter-spacing: .3px; }
+  dl { margin: 0 0 10px; display: grid; gap: 4px; }
+  dl div { display: grid; grid-template-columns: 120px 1fr; gap: 10px; font-size: 15px; }
+  dt { color: var(--muted); }
+  dd { margin: 0; }
+  @media (max-width: 520px) { dl div { grid-template-columns: 1fr; gap: 0; } dt { font-size: 13px; } }
+  .awards { list-style: none; margin: 0 0 10px; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .awards li { font-size: 13px; font-weight: 600; color: var(--purple-800); background: var(--purple-100); border-radius: 8px; padding: 4px 10px; }
+  .awards li::before { content: "★ "; color: var(--purple-500); }
+  .s-body p { margin: 0 0 8px; color: var(--muted); font-size: 15px; }
+  .s-body p.todo { font-style: italic; color: #8a80a0; }
+  .video { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; margin-top: 8px; background: #000; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .back { margin: 20px 0 0; font-size: 14px; }
+
+  .more { background: linear-gradient(120deg, var(--purple-700), var(--purple-900)); color: var(--white); border-radius: 24px; padding: 36px; }
+  .more h2 { color: var(--white); }
+  .more p { color: #e0d4f7; margin: 0 0 16px; }
+  .more .links2 { display: flex; flex-wrap: wrap; gap: 10px; }
+  .more .links2 a { color: var(--purple-800); background: var(--white); text-decoration: none; font-weight: 600; font-size: 14px; padding: 9px 14px; border-radius: 10px; }
+
+  footer { background: var(--purple-900); color: #cdb8f7; padding: 40px 0 28px; font-size: 15px; }
+  footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+  footer h4 { color: var(--white); margin: 0 0 12px; font-size: 15px; }
+  footer a { color: #e0d4f7; text-decoration: none; display: block; margin-bottom: 8px; }
+  footer a:hover { color: var(--white); text-decoration: underline; }
+  footer .fine { border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 18px; font-size: 13px; color: #a995d1; }
+  @media (max-width: 760px) { footer .cols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body id="top">
+<!--
+  PHOTOS: put season photos in assets/history/ using the names listed in assets/history/PHOTO-NAMES.txt
+  (e.g. frc1802-2008-robot.jpg, ftc21536-2025-team.jpg). Missing photos show a placeholder automatically.
+-->
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Piper Robotics home"><img src="assets/piper-robotics-logo.png" alt="Piper Robotics"></a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="history.html" aria-current="page">History</a>
+      <a href="https://scout.piperrobotics.net">Scout App</a>
+      <a href="https://parent.piperrobotics.net">Parent App</a>
+      <a href="https://www.piperschools.com" target="_blank" rel="noopener">Piper Schools</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Jump to a team">
+  <div class="wrap">
+    <a href="#overview">Overview</a>
+    <a href="#frc1802">Team Stealth · FRC 1802</a>
+    <a href="#ftc21536">Team Stealth · FTC 21536</a>
+    <a href="#ftc14213">Nighthawks · FTC 14213</a>
+    <a href="#fll623">B2 Spirit · FLL 623</a>
+  </div>
+</nav>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Piper USD 203 · Est. 2005</span>
+      <h1>Our History</h1>
+      <p>From a 12-student team founded in 2005 to four teams across three <em>FIRST</em> programs: two decades of building, breaking and rebuilding in Piper.</p>
+    </div>
+  </div>
+
+  <section id="overview">
+    <div class="wrap">
+      <h2>Program milestones</h2>
+      <div class="milestones">
+        <div class="ms"><span>2005</span><b>The beginning</b><p>Dr. Rebecca Knetter founds Team Stealth 1802, and B2 Spirit (FLL 623) begins.</p></div>
+        <div class="ms"><span>2008</span><b>Regional champions</b><p>FRC 1802 wins the Greater Kansas City Regional and competes at the <em>FIRST</em> Championship.</p></div>
+        <div class="ms"><span>2017</span><b>FTC arrives</b><p>The Nighthawks (FTC 14213) bring <em>FIRST</em> Tech Challenge to Piper.</p></div>
+        <div class="ms"><span>2022</span><b>Fourth team</b><p>Team Stealth adds FTC 21536.</p></div>
+        <div class="ms"><span>2023</span><b>Two world stages</b><p>FRC 1802 returns to the <em>FIRST</em> Championship and B2 Spirit competes at the FLL World Festival.</p></div>
+        <div class="ms"><span>2025</span><b>State bound</b><p>FTC 21536 reaches the Missouri-Kansas Championship for the first time.</p></div>
+        <div class="ms"><span>2026</span><b>Championship &amp; film award</b><p>FTC 21536 competes at the <em>FIRST</em> Championship and wins the <em>FIRST</em> Digital Animation Award.</p></div>
+        <div class="ms"><span>Today</span><b>Four teams</b><p>Piper hosts league events and mentors the next generation of engineers.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-sec" id="frc1802">
+    <div class="wrap">
+      <div class="team-head">
+        <div class="team-logo"><img src="assets/frc-1802.png" alt="Team Stealth FRC 1802 logo"></div>
+        <div>
+          <span class="badge">FRC 1802 · <em>FIRST</em> Robotics Competition</span>
+          <h2>Team Stealth</h2>
+          <p class="motto"><em>Tempus Fugit</em> · Time flies</p>
+          <p class="intro">Piper&#x27;s original team. Team Stealth was formed in September 2005 and has built a full-size competition robot every season since 2006. Over the years the team has been supported by the Ewing Marion Kauffman Foundation (founding sponsor), Black &amp; Veatch, JCPenney, Northrop Grumman, Honeywell, KC STEM Alliance, The Boeing Company, the Piper Robotics Alumni Foundation and many local businesses.</p>
+        </div>
+      </div>
+      <div class="stats"><div class="stat"><b>2006</b><small>Rookie year</small></div><div class="stat"><b>1</b><small>Official event win (2008)</small></div><div class="stat"><b>2</b><small>FIRST Championship trips</small></div><div class="stat"><b>11</b><small>Official FIRST awards</small></div></div>
+      <h3 class="seasons-title">Season by season</h3>
+      <div class="seasons">
+      <article class="season" id="frc1802-2006">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2006-robot.jpg" alt="FRC 1802 2006 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2006-team.jpg" alt="FRC 1802 2006 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2006</span><span class="game">Aim High</span></div>
+          <dl><div><dt>Event</dt><dd>Colorado Regional, Denver</dd></div><div><dt>Qualification</dt><dd>3rd seed, 8-1-0</dd></div><div><dt>Playoffs</dt><dd>Quarterfinalist</dd></div><div><dt>Robot</dt><dd>Knight Hawk</dd></div></dl>
+          <ul class="awards"><li>Highest Rookie Seed</li></ul>
+          <p>Rookie season. Founded in September 2005 by Dr. Rebecca Knetter with 12 students, 6 mentors and an $18,000 Kauffman Foundation grant, and mentored by FRC 1108 Panther Robotics. Students chose the name Stealth, the motto <em>Tempus Fugit</em>, and the team&#x27;s original orange-and-black colors.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2007">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2007-robot.jpg" alt="FRC 1802 2007 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2007-team.jpg" alt="FRC 1802 2007 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2007</span><span class="game">Rack &#x27;N&#x27; Roll</span></div>
+          <dl><div><dt>Event</dt><dd>Greater Kansas City Regional</dd></div><div><dt>Qualification</dt><dd>18th of 44, 5-4-1</dd></div><div><dt>Playoffs</dt><dd>Semifinalist</dd></div></dl>
+          
+          <p>The robot placed tubes on the rack and was designed to lift up to two alliance partners.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2008">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2008-robot.jpg" alt="FRC 1802 2008 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2008-team.jpg" alt="FRC 1802 2008 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2008</span><span class="game">FIRST Overdrive</span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · FIRST Championship (Curie) · Cowtown ThrowDown</dd></div><div><dt>Qualification</dt><dd>10th of 55 at GKC; 39th of 84 on Curie</dd></div><div><dt>Playoffs</dt><dd>Won GKC with Alliance 8 (1806, 1802, 476)</dd></div><div><dt>Season</dt><dd>14-6-2</dd></div></dl>
+          <ul class="awards"><li>Regional Winner</li></ul>
+          <p>The team&#x27;s first official event win and first trip to the FIRST Championship. Also competed at the first-ever Cowtown ThrowDown.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2009">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2009-robot.jpg" alt="FRC 1802 2009 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2009-team.jpg" alt="FRC 1802 2009 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2009</span><span class="game">LUNACY</span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cowtown ThrowDown</dd></div><div><dt>Qualification</dt><dd>40th of 61</dd></div><div><dt>Playoffs</dt><dd>Cowtown semifinalist</dd></div></dl>
+          
+          <p>The robot collected Moon Rocks and shot them into opponents&#x27; trailers. Eric Mabie became head coach in the fall, following Ron Brown (2008–09).</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2010">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2010-robot.jpg" alt="FRC 1802 2010 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2010-team.jpg" alt="FRC 1802 2010 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2010</span><span class="game">BREAKAWAY</span></div>
+          <dl><div><dt>Event</dt><dd>Greater Kansas City Regional</dd></div><div><dt>Qualification</dt><dd>40th of 59, 3-4-3</dd></div></dl>
+          <ul class="awards"><li>Gracious Professionalism Award</li></ul>
+          <p>Suspension to drive over the bumps and a pneumatic kicker up front.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2011">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2011-robot.jpg" alt="FRC 1802 2011 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2011-team.jpg" alt="FRC 1802 2011 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2011</span><span class="game">LOGO MOTION</span></div>
+          <dl><div><dt>Event</dt><dd>Greater Kansas City Regional</dd></div><div><dt>Qualification</dt><dd>25th of 56, 5-5-0</dd></div></dl>
+          <ul class="awards"><li>Website Award</li></ul>
+          <p>Scored on every tube level and carried a pole-climbing minibot. Students volunteered at the FIRST Championship in St. Louis, and Piper hosted its first FLL Rumble.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2012">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2012-robot.jpg" alt="FRC 1802 2012 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2012-team.jpg" alt="FRC 1802 2012 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2012</span><span class="game">Rebound Rumble</span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>46th of 64</dd></div><div><dt>Playoffs</dt><dd>GKC playoffs 2-2</dd></div></dl>
+          <ul class="awards"><li>Imagery Award in honor of Jack Kamen</li></ul>
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2013">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2013-robot.jpg" alt="FRC 1802 2013 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2013-team.jpg" alt="FRC 1802 2013 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2013</span><span class="game">ULTIMATE ASCENT</span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>55th of 55, 1-9-0</dd></div></dl>
+          
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2014">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2014-robot.jpg" alt="FRC 1802 2014 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2014-team.jpg" alt="FRC 1802 2014 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2014</span><span class="game">AERIAL ASSIST</span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>22nd of 58, 6-5-0</dd></div><div><dt>Playoffs</dt><dd>Reached GKC playoffs</dd></div></dl>
+          <ul class="awards"><li>Quality Award sponsored by Motorola</li></ul>
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2015">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2015-robot.jpg" alt="FRC 1802 2015 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2015-team.jpg" alt="FRC 1802 2015 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2015</span><span class="game">RECYCLE RUSH</span></div>
+          <dl><div><dt>Event</dt><dd>Greater Kansas City Regional</dd></div><div><dt>Qualification</dt><dd>31st of 54</dd></div><div><dt>Robot</dt><dd>Scorpion</dd></div></dl>
+          
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2016">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2016-robot.jpg" alt="FRC 1802 2016 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2016-team.jpg" alt="FRC 1802 2016 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2016</span><span class="game">FIRST STRONGHOLD</span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · CowTown ThrowDown</dd></div><div><dt>Qualification</dt><dd>54th of 59 at GKC</dd></div></dl>
+          
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2017">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2017-robot.jpg" alt="FRC 1802 2017 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2017-team.jpg" alt="FRC 1802 2017 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2017</span><span class="game">FIRST STEAMWORKS</span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>54th of 60 at GKC</dd></div></dl>
+          
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2018">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2018-robot.jpg" alt="FRC 1802 2018 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2018-team.jpg" alt="FRC 1802 2018 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2018</span><span class="game">FIRST POWER UP</span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>36th of 43 at GKC</dd></div></dl>
+          
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2019">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2019-robot.jpg" alt="FRC 1802 2019 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2019-team.jpg" alt="FRC 1802 2019 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2019</span><span class="game">DESTINATION: DEEP SPACE</span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>10th of 36 at GKC, 8-4-0</dd></div><div><dt>Playoffs</dt><dd>GKC: Alliance 6 first pick; won Cow Town with Alliance 1 (3928, 323, 1802)</dd></div></dl>
+          <ul class="awards"><li>Judges&#x27; Award</li><li>Cow Town ThrowDown Winner</li></ul>
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2020">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2020-robot.jpg" alt="FRC 1802 2020 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2020-team.jpg" alt="FRC 1802 2020 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2020</span><span class="game">INFINITE RECHARGE</span></div>
+          <dl><div><dt>Event</dt><dd>Central Missouri Regional (cancelled)</dd></div></dl>
+          
+          <p>Season cancelled due to COVID-19.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2021">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2021-robot.jpg" alt="FRC 1802 2021 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2021-team.jpg" alt="FRC 1802 2021 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2021</span><span class="game">INFINITE RECHARGE at Home</span></div>
+          <dl><div><dt>Events</dt><dd>At Home Challenge · Game Design Challenge · Cow Town ThrowDown</dd></div></dl>
+          
+          <p>A remote season of at-home skills and design challenges, then a return to the field at Cow Town in November.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2022">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2022-robot.jpg" alt="FRC 1802 2022 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2022-team.jpg" alt="FRC 1802 2022 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2022</span><span class="game">RAPID REACT</span></div>
+          <dl><div><dt>Event</dt><dd>Greater Kansas City Regional</dd></div><div><dt>Qualification</dt><dd>15th of 30, 5-7-0</dd></div><div><dt>Playoffs</dt><dd>Alliance 8 captain</dd></div><div><dt>Robot</dt><dd>Domo</dd></div></dl>
+          
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2023">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2023-robot.jpg" alt="FRC 1802 2023 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2023-team.jpg" alt="FRC 1802 2023 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2023</span><span class="game">CHARGED UP</span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · FIRST Championship (Johnson) · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>13th of 36 at GKC; 19th of 78 on Johnson</dd></div><div><dt>Playoffs</dt><dd>GKC finalist as Alliance 5 first pick</dd></div></dl>
+          <ul class="awards"><li>Regional Finalist</li><li>Wildcard: FIRST Championship qualifier</li></ul>
+          <p>The team&#x27;s second trip to the FIRST Championship.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2024">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2024-robot.jpg" alt="FRC 1802 2024 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2024-team.jpg" alt="FRC 1802 2024 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2024</span><span class="game">CRESCENDO</span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · MO-KAN State Championship · Cow Town Throwdown</dd></div><div><dt>Qualification</dt><dd>41st of 42 at GKC; 26th of 34 at MO-KAN</dd></div></dl>
+          
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2025">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2025-robot.jpg" alt="FRC 1802 2025 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2025-team.jpg" alt="FRC 1802 2025 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2025</span><span class="game">REEFSCAPE</span></div>
+          <dl><div><dt>Events</dt><dd>Greater KC Regional · MO-KAN State Championship · Cow Town Throwdown</dd></div><div><dt>Qualification</dt><dd>15th of 27 at MO-KAN, 6-5-0</dd></div><div><dt>Playoffs</dt><dd>MO-KAN: Alliance 7 first pick</dd></div></dl>
+          <ul class="awards"><li>FIRST Dean&#x27;s List Finalist</li></ul>
+          <p>The robot averaged about 103 points per qualification match at the state championship, and the team helped launch Piper&#x27;s new high school robotics lab.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2026">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2026-robot.jpg" alt="FRC 1802 2026 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2026-team.jpg" alt="FRC 1802 2026 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2026</span><span class="game">REBUILT</span></div>
+          <dl><div><dt>Events</dt><dd>Heartland Regional · Greater KC Regional · Cow Town ThrowDown</dd></div><div><dt>Qualification</dt><dd>11th of 41 at Heartland, 7-3-0</dd></div><div><dt>Playoffs</dt><dd>Heartland: Alliance 8 captain; GKC: Alliance 6 first pick</dd></div></dl>
+          <ul class="awards"><li>Gracious Professionalism Award</li></ul>
+          <p>New support from The Boeing Company and the Piper Robotics Alumni Foundation.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="frc1802-2027">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/frc1802-2027-robot.jpg" alt="FRC 1802 2027 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/frc1802-2027-team.jpg" alt="FRC 1802 2027 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2027</span><span class="game">BIOCORE</span></div>
+          <dl><div><dt>Event</dt><dd>City of Fountains Regional (registered)</dd></div></dl>
+          
+          <p>Upcoming season.</p>
+          
+          
+        </div>
+      </article>
+      </div>
+      <p class="back"><a href="#top">Back to top ↑</a></p>
+    </div>
+  </section>
+  <section class="team-sec" id="ftc21536">
+    <div class="wrap">
+      <div class="team-head">
+        <div class="team-logo"><img src="assets/ftc-21536.png" alt="Team Stealth FTC 21536 logo"></div>
+        <div>
+          <span class="badge">FTC 21536 · <em>FIRST</em> Tech Challenge</span>
+          <h2>Team Stealth</h2>
+          <p class="motto"><em>Tempus Fugit</em> · Time flies</p>
+          <p class="intro">Team Stealth&#x27;s FIRST Tech Challenge team. In four seasons it went from rookie to the FIRST Championship and an international animation award.</p>
+        </div>
+      </div>
+      <div class="stats"><div class="stat"><b>2022</b><small>Rookie year</small></div><div class="stat"><b>10</b><small>Official FIRST awards</small></div><div class="stat"><b>2026</b><small>FIRST Championship</small></div><div class="stat"><b>1st</b><small>Digital Animation Award</small></div></div>
+      <h3 class="seasons-title">Season by season</h3>
+      <div class="seasons">
+      <article class="season" id="ftc21536-2022">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc21536-2022-robot.jpg" alt="FTC 21536 2022–23 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc21536-2022-team.jpg" alt="FTC 21536 2022–23 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2022–23</span><span class="game">POWERPLAY</span></div>
+          <dl><div><dt>Season record</dt><dd>13-5-0</dd></div></dl>
+          <ul class="awards"><li>Motivate Award, 3rd (KC West League Tournament)</li></ul>
+          <p>Rookie season, as Team Stealth adds a FIRST Tech Challenge team.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="ftc21536-2023">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc21536-2023-robot.jpg" alt="FTC 21536 2023–24 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc21536-2023-team.jpg" alt="FTC 21536 2023–24 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2023–24</span><span class="game">CENTERSTAGE</span></div>
+          <dl><div><dt>Season record</dt><dd>13-4-1</dd></div></dl>
+          <ul class="awards"><li>Connect Award, 2nd (KC West League Tournament)</li></ul>
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="ftc21536-2024">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc21536-2024-robot.jpg" alt="FTC 21536 2024–25 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc21536-2024-team.jpg" alt="FTC 21536 2024–25 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2024–25</span><span class="game">INTO THE DEEP</span></div>
+          <dl><div><dt>Season record</dt><dd>24-5-0</dd></div><div><dt>Highlights</dt><dd>Won the KC West League Tournament; first Missouri-Kansas Championship appearance in program history</dd></div></dl>
+          <ul class="awards"><li>Winning Alliance (KC West League Tournament)</li><li>Design Award, 2nd (KC West League Tournament)</li><li>Think Award, 2nd (Missouri-Kansas Championship)</li></ul>
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="ftc21536-2025">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc21536-2025-robot.jpg" alt="FTC 21536 2025–26 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc21536-2025-team.jpg" alt="FTC 21536 2025–26 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2025–26</span><span class="game">DECODE</span></div>
+          <dl><div><dt>Season record</dt><dd>36-13-0</dd></div><div><dt>Highlights</dt><dd>1st seed at the KC West League Tournament and the West Super Qualifier; state finalist; FIRST Championship, Goodall Division</dd></div></dl>
+          <ul class="awards"><li>Winning Alliance captain (West Super Qualifier)</li><li>Finalist Alliance (Missouri-Kansas Championship)</li><li>Finalist Alliance captain (KC West League Tournament)</li><li>Design Award, 2nd (League Tournament &amp; Super Qualifier)</li><li>FIRST Digital Animation Award: FTC winner</li></ul>
+          <p>The team&#x27;s stop-motion film <em>Exhibit Earth</em>, about plastic pollution, won the 2026 FIRST Digital Animation Award for FTC, along with a 2026–27 sponsorship from WPI.</p>
+          
+          <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/BPcMireewBU" title="Exhibit Earth, 2026 FIRST Digital Animation Award winner" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        </div>
+      </article>
+      <article class="season" id="ftc21536-2026">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc21536-2026-robot.jpg" alt="FTC 21536 2026–27 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc21536-2026-team.jpg" alt="FTC 21536 2026–27 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2026–27</span><span class="game">BIOBUZZ</span></div>
+          <dl><div><dt>So far</dt><dd>18-0-0 across three league meets</dd></div></dl>
+          
+          <p>Season in progress. Piper hosted two KC West League meets in November 2026.</p>
+          
+          
+        </div>
+      </article>
+      </div>
+      <p class="back"><a href="#top">Back to top ↑</a></p>
+    </div>
+  </section>
+  <section class="team-sec" id="ftc14213">
+    <div class="wrap">
+      <div class="team-head">
+        <div class="team-logo"><img src="assets/ftc-14213.png" alt="Nighthawks FTC 14213 logo"></div>
+        <div>
+          <span class="badge">FTC 14213 · <em>FIRST</em> Tech Challenge</span>
+          <h2>Nighthawks</h2>
+          <p class="motto"><em>Audaces fortuna iuvat</em> · Fortune favors the bold</p>
+          <p class="intro">Piper&#x27;s longest-running FIRST Tech Challenge team, competing in the KC West League with awards for Design, Connect and Motivate.</p>
+        </div>
+      </div>
+      <div class="stats"><div class="stat"><b>2017</b><small>Rookie year</small></div><div class="stat"><b>3</b><small>League Tournament awards</small></div><div class="stat"><b>14-4-0</b><small>Best season (2024–25)</small></div><div class="stat"><b>KC West</b><small>League</small></div></div>
+      <h3 class="seasons-title">Season by season</h3>
+      <div class="seasons">
+      <article class="season" id="ftc14213-2017">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2017-robot.jpg" alt="FTC 14213 2017–18 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2017-team.jpg" alt="FTC 14213 2017–18 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2017–18</span><span class="game">RELIC RECOVERY</span></div>
+          
+          
+          <p>Rookie season per FIRST. (Piper Foundation records list 2018 as the founding year.)</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="ftc14213-2018">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2018-robot.jpg" alt="FTC 14213 2018–19 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2018-team.jpg" alt="FTC 14213 2018–19 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2018–19</span><span class="game">ROVER RUCKUS</span></div>
+          <dl><div><dt>Events</dt><dd>Missouri Central Mission Control (Jan 2019)</dd></div></dl>
+          
+          <p>Earliest Nighthawks event on record.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="ftc14213-2019">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2019-robot.jpg" alt="FTC 14213 2019–20 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2019-team.jpg" alt="FTC 14213 2019–20 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2019–20</span><span class="game">SKYSTONE</span></div>
+          <dl><div><dt>Events</dt><dd>Including Missouri West Back Up (Feb 2020)</dd></div></dl>
+          
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="ftc14213-2020">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2020-robot.jpg" alt="FTC 14213 2020–21 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2020-team.jpg" alt="FTC 14213 2020–21 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2020–21</span><span class="game">ULTIMATE GOAL</span></div>
+          
+          
+          <p>No official events recorded during the pandemic season.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="ftc14213-2021">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2021-robot.jpg" alt="FTC 14213 2021–22 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2021-team.jpg" alt="FTC 14213 2021–22 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2021–22</span><span class="game">FREIGHT FRENZY</span></div>
+          <dl><div><dt>Season record</dt><dd>5-13-0</dd></div></dl>
+          <ul class="awards"><li>Design Award, 2nd (KC West League Tournament)</li></ul>
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="ftc14213-2022">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2022-robot.jpg" alt="FTC 14213 2022–23 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2022-team.jpg" alt="FTC 14213 2022–23 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2022–23</span><span class="game">POWERPLAY</span></div>
+          <dl><div><dt>Season record</dt><dd>6-10-0</dd></div></dl>
+          <ul class="awards"><li>Connect Award, 3rd (KC West League Tournament)</li></ul>
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="ftc14213-2023">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2023-robot.jpg" alt="FTC 14213 2023–24 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2023-team.jpg" alt="FTC 14213 2023–24 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2023–24</span><span class="game">CENTERSTAGE</span></div>
+          <dl><div><dt>Season record</dt><dd>11-5-0</dd></div></dl>
+          
+          <p>Piper hosted the KC West League Tournament in February 2024.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="ftc14213-2024">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2024-robot.jpg" alt="FTC 14213 2024–25 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2024-team.jpg" alt="FTC 14213 2024–25 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2024–25</span><span class="game">INTO THE DEEP</span></div>
+          <dl><div><dt>Season record</dt><dd>14-4-0</dd></div></dl>
+          <ul class="awards"><li>Motivate Award, 2nd (KC West League Tournament)</li></ul>
+          <p>The team&#x27;s best season record to date.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="ftc14213-2025">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2025-robot.jpg" alt="FTC 14213 2025–26 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2025-team.jpg" alt="FTC 14213 2025–26 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2025–26</span><span class="game">DECODE</span></div>
+          <dl><div><dt>Season record</dt><dd>8-7-1</dd></div></dl>
+          
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="ftc14213-2026">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/ftc14213-2026-robot.jpg" alt="FTC 14213 2026–27 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/ftc14213-2026-team.jpg" alt="FTC 14213 2026–27 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2026–27</span><span class="game">BIOBUZZ</span></div>
+          <dl><div><dt>So far</dt><dd>6-6-0</dd></div></dl>
+          
+          <p>Season in progress. Piper hosted two KC West League meets in November 2026.</p>
+          
+          
+        </div>
+      </article>
+      </div>
+      <p class="back"><a href="#top">Back to top ↑</a></p>
+    </div>
+  </section>
+  <section class="team-sec" id="fll623">
+    <div class="wrap">
+      <div class="team-head">
+        <div class="team-logo"><img src="assets/fll-623.png" alt="B2 Spirit FLL 623 logo"></div>
+        <div>
+          <span class="badge">FLL 623 · <em>FIRST</em> LEGO League Challenge</span>
+          <h2>B2 Spirit</h2>
+          <p class="motto"><em>Omnes miramini per Explorationis</em> · All wonder through exploration</p>
+          <p class="intro">Piper&#x27;s FIRST LEGO League team, where students build and program LEGO robots and take on a research project each season.</p>
+        </div>
+      </div>
+      <div class="stats"><div class="stat"><b>2005</b><small>Founded</small></div><div class="stat"><b>2023</b><small>World Festival, Houston</small></div><div class="stat"><b>2nd</b><small>Champion&#x27;s Award, KC (2022)</small></div><div class="stat"><b>KC</b><small>Region</small></div></div>
+      <h3 class="seasons-title">Season by season</h3>
+      <div class="seasons">
+      <article class="season" id="fll623-2005">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2005-robot.jpg" alt="FLL 623 2005–2020 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2005-team.jpg" alt="FLL 623 2005–2020 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2005–2020</span><span class="game">Early seasons</span></div>
+          
+          
+          <p>B2 Spirit was founded in 2005, the same year Team Stealth was formed. Have photos, results or stories from these years? We&#x27;d love to add them.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="fll623-2021">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2021-robot.jpg" alt="FLL 623 2021–22 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2021-team.jpg" alt="FLL 623 2021–22 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2021–22</span><span class="game">CARGO CONNECT</span></div>
+          <dl><div><dt>Highlights</dt><dd>Advanced to the Arkansas Razorback Invitational</dd></div></dl>
+          <ul class="awards"><li>Champion&#x27;s Award, 2nd (Kansas City FLL Championship)</li><li>Global Innovation Award nominee</li><li>Innovation Project Award, 2nd (qualifier)</li></ul>
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="fll623-2022">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2022-robot.jpg" alt="FLL 623 2022–23 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2022-team.jpg" alt="FLL 623 2022–23 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2022–23</span><span class="game">SUPERPOWERED</span></div>
+          <dl><div><dt>Highlights</dt><dd>Greater KC regional champion; FIRST Championship World Festival, Houston</dd></div></dl>
+          <ul class="awards"><li>Regional Champion</li><li>Innovation Project Award (qualifier)</li><li>Engineering Excellence Award (qualifier)</li><li>Encore rounds, 2nd (World Festival)</li></ul>
+          <p>B2 Spirit represented Kansas City at the FLL World Festival in Houston in April 2023.</p>
+          
+          
+        </div>
+      </article>
+      <article class="season" id="fll623-2023">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2023-robot.jpg" alt="FLL 623 2023–24 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2023-team.jpg" alt="FLL 623 2023–24 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2023–24</span><span class="game">MASTERPIECE</span></div>
+          <dl><div><dt>Highlights</dt><dd>Advanced to the Greater Kansas City Championship</dd></div></dl>
+          
+          
+          
+          
+        </div>
+      </article>
+      <article class="season" id="fll623-2024">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2024-robot.jpg" alt="FLL 623 2024–25 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2024-team.jpg" alt="FLL 623 2024–25 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2024–25</span><span class="game">SUBMERGED</span></div>
+          
+          
+          
+          <p class="todo">Add this season’s highlights.</p>
+          
+        </div>
+      </article>
+      <article class="season" id="fll623-2025">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2025-robot.jpg" alt="FLL 623 2025–26 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2025-team.jpg" alt="FLL 623 2025–26 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2025–26</span><span class="game">UNEARTHED</span></div>
+          
+          
+          
+          <p class="todo">Add this season’s highlights.</p>
+          
+        </div>
+      </article>
+      <article class="season" id="fll623-2026">
+        <div class="photos">
+          <figure class="ph" data-label="Robot photo"><img src="assets/history/fll623-2026-robot.jpg" alt="FLL 623 2026–27 robot" loading="lazy" onerror="this.remove()"></figure>
+          <figure class="ph" data-label="Team photo"><img src="assets/history/fll623-2026-team.jpg" alt="FLL 623 2026–27 team" loading="lazy" onerror="this.remove()"></figure>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="yr">2026–27</span><span class="game">BIOGLOW</span></div>
+          
+          
+          <p>Season in progress.</p>
+          
+          
+        </div>
+      </article>
+      </div>
+      <p class="back"><a href="#top">Back to top ↑</a></p>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="more">
+        <h2>Help us fill in the story</h2>
+        <p>Have photos, robot names or memories from a past season? Send them to a coach and we'll add them here.</p>
+        <div class="links2">
+          <a href="https://www.youtube.com/@piperrobotics" target="_blank" rel="noopener">Piper Robotics on YouTube</a>
+          <a href="https://www.instagram.com/teamstealth1802/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/firstteamstealth1802/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://frc-events.firstinspires.org/team/1802" target="_blank" rel="noopener">FRC 1802 on <em>FIRST</em></a>
+          <a href="https://ftc-events.firstinspires.org/team/21536" target="_blank" rel="noopener">FTC 21536 on <em>FIRST</em></a>
+          <a href="https://ftc-events.firstinspires.org/team/14213" target="_blank" rel="noopener">FTC 14213 on <em>FIRST</em></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><h4>Piper Robotics</h4><p style="margin:0">A program of Piper Unified School District 203, Kansas City, Kansas.</p></div>
+      <div><h4>Piper Schools</h4><a href="https://www.piperschools.com" target="_blank" rel="noopener">Piper USD 203</a><a href="https://www.piperschools.com/schools" target="_blank" rel="noopener">Our Schools</a></div>
+      <div><h4>Robotics</h4><a href="index.html">Home</a><a href="https://scout.piperrobotics.net">Scout App</a><a href="https://parent.piperrobotics.net">Parent App</a></div>
+    </div>
+    <div class="fine">© <span id="yr">2026</span> Piper Robotics · Piper USD 203 · Kansas City, Kansas · Season data from <em>FIRST</em> event records and Piper Robotics archives.</div>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
